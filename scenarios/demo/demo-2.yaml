@@ -1,0 +1,8 @@
+# Démonstration 2 : petite unité locale (docs/demo.md).
+nom: Petite unité locale
+description: >-
+  Unité de faible capacité approvisionnée à moins de 50 km, mêmes prix que la démonstration 1.
+base: demo-1
+entreprise:
+  PAR-01: {valeur: 3000, note: "petite unité, supposée"}
+  PAR-59: {valeur: 50, note: "distance maximale d'approvisionnement demandée"}

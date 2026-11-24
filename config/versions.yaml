@@ -1,0 +1,88 @@
+# Tables mises à jour par l'entreprise sans écrire de code (section 7.3, RG-17 à RG-19).
+#
+# Chaque modification (import Excel, saisie directe, prix observé, préparation des données,
+# restauration) crée une version : copie des tables modifiées dans data/versions/<id>/ et une
+# entrée du journal data/versions.yaml (auteur, date, commentaire, tables, lignes ajoutées,
+# modifiées et supprimées). Rien n'est écrasé ; la table active est celle de la dernière version
+# qui la contient, sinon le fichier de base ci-dessous.
+#
+# Pour chaque table :
+#   fichier    : fichier de base, relatif à data/ ;
+#   cle        : colonnes qui identifient une ligne (lignes ajoutées, modifiées, supprimées) ;
+#   province   : colonne rattachée au référentiel (RG-02), avec ses codes hors province admis ;
+#   valeurs    : colonnes numériques contrôlées (RG-19) et fourchette de config/controles.yaml
+#                (« fourchette_selon » : colonne qui nomme la fourchette ligne par ligne) ;
+#   source, date : colonnes obligatoires d'une ligne ajoutée ou modifiée (RG-18) ; format_date :
+#                année seule (annee) ou date complète AAAA-MM-JJ (iso) ;
+#   variation  : contrôle « × facteur par rapport à la campagne précédente » (RG-19).
+
+journal: versions.yaml
+dossier: versions
+prefixe_version: v
+chiffres_version: 4
+# Excel ne conserve que 15 chiffres significatifs : deux nombres dont l'écart relatif est
+# inférieur à ce seuil sont égaux (une cellule non modifiée n'est pas comptée comme modifiée).
+tolerance_relative_excel: 1.0e-12
+
+tables:
+  production:
+    libelle: Production et superficie par province (RG-04)
+    fichier: processed/production.parquet
+    format: parquet
+    cle: [code_province, code_culture, campagne, variable]
+    province: {colonne: code_province, codes_admis: []}
+    valeurs: {colonnes: [valeur], table_fourchettes: production, fourchette_selon: variable}
+    source: source_id
+    date: annee
+    format_date: annee
+    variation: {colonne_campagne: campagne, groupe: [code_province, code_culture, variable]}
+  residus:
+    libelle: Propriétés des résidus (§14.2)
+    fichier: input/residus.csv
+    format: csv
+    cle: [code_residu, parametre, precision]
+    valeurs: {colonnes: [valeur], table_fourchettes: residus, fourchette_selon: parametre}
+    source: source_id
+    date: annee
+    format_date: annee
+  concurrence:
+    libelle: Concurrence d'usage et prix d'achat (SRC-17)
+    fichier: input/concurrence.csv
+    format: csv
+    cle: [code_province, code_residu, parametre, precision]
+    province: {colonne: code_province, codes_admis: [NATIONAL]}
+    valeurs: {colonnes: [valeur], table_fourchettes: concurrence, fourchette_selon: parametre}
+    source: source_id
+    date: annee
+    format_date: annee
+  facteurs_emission:
+    libelle: Facteurs d'émission (SRC-15)
+    fichier: input/facteurs_emission.csv
+    format: csv
+    cle: [code_activite, parametre, precision]
+    valeurs: {colonnes: [valeur], table_fourchettes: facteurs_emission, fourchette_selon: parametre}
+    source: source_id
+    date: annee
+    format_date: annee
+  calendrier:
+    libelle: Mois de disponibilité des résidus
+    fichier: input/calendrier.csv
+    format: csv
+    cle: [code_residu]
+    valeurs:
+      colonnes: [m01, m02, m03, m04, m05, m06, m07, m08, m09, m10, m11, m12]
+      table_fourchettes: calendrier
+      fourchette: mois
+    source: source_id
+    date: annee
+    format_date: annee
+  prix_observes:
+    libelle: Prix observés (grignons, paille, gazole…), historique
+    fichier: input/prix_observes.csv
+    format: csv
+    cle: [date, produit, code_province, source]
+    province: {colonne: code_province, codes_admis: [NATIONAL]}
+    valeurs: {colonnes: [prix], table_fourchettes: prix_observes, fourchette: prix}
+    source: source
+    date: date
+    format_date: iso

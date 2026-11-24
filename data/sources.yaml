@@ -1,0 +1,598 @@
+# Manifeste des sources (RG-05).
+#
+# SRC-01 à SRC-19 : catalogue de la section 7.1 du cahier des charges.
+# SRC-xx-… : publications citées aux sections 14.2 et 14.3, rattachées à leur source parente
+# du catalogue ; le titre reprend le libellé du lien dans le cahier.
+# CDC : décisions de l'équipe (ÉQ) et propositions d'analyse (PROP) du cahier des charges.
+# telechargement : procédure de « python -m scripts.download » pour les sources à adresse stable.
+# fichiers : rempli par le script (adresse, date, taille, SHA-256) ; ne pas modifier à la main.
+
+sources:
+  CDC:
+    titre: Cahier des charges de l'outil d'aide à la décision (décisions ÉQ et propositions PROP)
+    url: docs/cahier_des_charges.md
+    nature: document du projet
+  SRC-01:
+    titre: Open Data Maroc — Production végétale 2010-2022
+    url: https://data.gov.ma/data/fr/group/agriculture
+    contenu: 'Production et superficie par produit, au niveau national : recoupement des totaux seulement'
+    format: XLSX
+    maille: Nationale (vérifié le 22/11/2026)
+    licence: Open Data Commons Open Database License (ODbL)
+    priorite: P1
+    telechargement:
+      methode: ckan
+      api: https://data.gov.ma/data/api/3/action/package_show
+      jeu: production-vegetale-2010-2022
+      ressources:
+      - nom: 20230714-Production végétale 2010-2022.xlsx
+        fichier: production_vegetale_2010_2022.xlsx
+    fichiers:
+      production_vegetale_2010_2022.xlsx:
+        url: https://data.gov.ma/data/fr/dataset/fb340a2e-7a78-4880-a7ff-d3eab72a4a60/resource/8c15d785-b1e6-4f11-acf9-958d34877529/download/20230714-production-vegetale-2010-2022.xlsx
+        date_telechargement: '2026-11-22'
+        taille_octets: 346970
+        sha256: 0fe1cbd11fe9c674500f28e35b3d46b170a5db7942b0ce11aa27e0b7918c87d2
+  SRC-02:
+    titre: Ministère de l'Agriculture — Statagri
+    contenu: Superficies et productions par culture
+    format: Consultation web, export à vérifier
+    maille: Région ou province
+    licence: Publique
+    priorite: P1
+  SRC-03:
+    titre: HCP — Le Maroc en chiffres, Annuaire statistique
+    contenu: Superficies et productions des principales cultures, recoupement
+    format: PDF, XLSX
+    maille: Nationale et régionale
+    licence: Publique
+    priorite: P1
+  SRC-04:
+    titre: CROPGRIDS
+    url: https://figshare.com/articles/dataset/CROPGRIDS/22491997
+    contenu: Surfaces récoltées et cultivées de 173 cultures, année 2020
+    format: NetCDF, grille 0,05°
+    maille: Pixel d'environ 5,6 km
+    licence: CC BY 4.0
+    priorite: P1
+    telechargement:
+      methode: figshare
+      api: https://api.figshare.com/v2/articles/22491997
+      ressources:
+      - nom: CROPGRIDSv1.08_NC_maps.zip
+      - nom: CODES.zip
+      - nom: Table_CROPGRIDSv1.08_COU.xlsx
+    fichiers:
+      CROPGRIDSv1.08_NC_maps.zip:
+        url: https://ndownloader.figshare.com/files/44950942
+        date_telechargement: '2026-11-22'
+        taille_octets: 806855203
+        sha256: 63161d27224ad242bad93585e138f62905d31d11fbfc1745ab95c39c2fb3e130
+        supprime_le: '2026-11-22'
+        remplace_par: data/processed/cropgrids_maroc.nc
+        note: retéléchargeable par python -m scripts.decouper_cropgrids ; emprise du Maroc conservée dans data/processed/cropgrids_maroc.nc
+      CODES.zip:
+        url: https://ndownloader.figshare.com/files/44950360
+        date_telechargement: '2026-11-22'
+        taille_octets: 553488
+        sha256: 6f81b70d89b8ef57fc095b8f9c40f2de36573dbabd119b70de7c411fe3003533
+      Table_CROPGRIDSv1.08_COU.xlsx:
+        url: https://ndownloader.figshare.com/files/44950936
+        date_telechargement: '2026-11-22'
+        taille_octets: 515789
+        sha256: 33a62448598ea0b5971486ffab021c33679a5ad7e81909b8ab4b5262b70d039b
+  SRC-05:
+    titre: HDX — Frontières administratives du Maroc (HCP)
+    url: https://data.humdata.org/dataset/cod-ab-mar
+    contenu: Polygones des régions et provinces
+    format: SHP
+    maille: Niveaux 0 à 4
+    licence: Creative Commons Attribution for Intergovernmental Organisations (CC BY-IGO)
+    priorite: P1
+    telechargement:
+      methode: ckan
+      api: https://data.humdata.org/api/3/action/package_show
+      jeu: cod-ab-mar
+      ressources:
+      - nom: mar_admin_boundaries.shp.zip
+      - nom: mar_admin_boundaries.xlsx
+    fichiers:
+      mar_admin_boundaries.shp.zip:
+        url: https://data.humdata.org/dataset/7fb8f891-35f2-4bd5-8c75-5e7797ff1731/resource/402673c6-9083-411f-b1a1-9d9c0aedb014/download/mar_admin_boundaries.shp.zip
+        date_telechargement: '2026-11-22'
+        taille_octets: 2118621
+        sha256: c03e7861442180e731942a31eeca3cd160aab6aaa10c3f36356cad2fd372d9f7
+      mar_admin_boundaries.xlsx:
+        url: https://data.humdata.org/dataset/7fb8f891-35f2-4bd5-8c75-5e7797ff1731/resource/4ac7e55a-fa37-41dd-b763-29156b470744/download/mar_admin_boundaries.xlsx
+        date_telechargement: '2026-11-22'
+        taille_octets: 21547
+        sha256: 3d26013673c4ae469be9a60148deec0b6bffa32caf4996e2160d1eab320095de
+  SRC-06:
+    titre: Geofabrik — extrait OpenStreetMap Maroc
+    url: https://download.geofabrik.de
+    contenu: Réseau routier, lignes électriques, zones industrielles
+    format: PBF, SHP
+    maille: Vecteur
+    licence: ODbL
+    priorite: P1
+    telechargement:
+      methode: direct
+      ressources:
+      - nom: morocco-latest.osm.pbf
+        url: https://download.geofabrik.de/africa/morocco-latest.osm.pbf
+    fichiers:
+      morocco-latest.osm.pbf:
+        url: https://download.geofabrik.de/africa/morocco-latest.osm.pbf
+        date_telechargement: '2026-11-22'
+        taille_octets: 244732474
+        sha256: f8f84215ae144ca4777b1c8b51c7f1360f1b432aeaec74e3edefbdba9ec8a78a
+  SRC-07:
+    titre: OSRM (moteur de routage local sur SRC-06)
+    contenu: Matrices de distances et de temps routiers
+    format: Service local
+    maille: Point à point
+    licence: BSD
+    priorite: P1
+  SRC-08:
+    titre: Base Phyllis
+    url: https://www.ecn.nl/phyllis2/
+    contenu: Carbone, cendres, humidité, PCI de chaque résidu
+    format: Web, saisie manuelle
+    maille: Par matériau
+    licence: Consultation libre
+    priorite: P1
+  SRC-09:
+    titre: HCP — RGPH 2024
+    url: https://www.hcp.ma/Population-legale-du-Royaume-du-Maroc-repartie-par-regions-provinces-et-prefectures-et-communes-selon-les-resultats-du_a3974.html
+    contenu: Population légale urbaine et rurale
+    format: XLSX
+    maille: Province, commune
+    licence: Publique
+    priorite: P1
+    telechargement:
+      methode: direct
+      ressources:
+      - nom: Population légale RGPH 2024, format EXCEL
+        url: https://www.hcp.ma/file/242341/
+        fichier: rgph2024_population_legale.xlsx
+    fichiers:
+      rgph2024_population_legale.xlsx:
+        url: https://www.hcp.ma/file/242341/
+        date_telechargement: '2026-11-22'
+        taille_octets: 166693
+        sha256: 7e9d3d402cc2fd0d9c4fc941c4f23c6a5e5ddcbefbba80b7540267f8e2728dca
+  SRC-10:
+    titre: SoilGrids (ISRIC)
+    url: https://www.isric.org/explore/soilgrids
+    contenu: Carbone organique des sols, 0-30 cm
+    format: GeoTIFF 250 m
+    maille: Pixel
+    licence: CC BY 4.0
+    priorite: P2
+  SRC-11:
+    titre: WRI Aqueduct 4.0
+    url: https://www.wri.org/data/aqueduct-global-maps-40-data
+    contenu: Stress hydrique de base
+    format: CSV, SHP
+    maille: Bassin versant, province
+    licence: CC BY 4.0
+    priorite: P2
+  SRC-12:
+    titre: Protected Planet (WDPA)
+    url: https://protectedplanet.net/country/MAR
+    contenu: Aires protégées
+    format: SHP, GeoJSON
+    maille: Vecteur
+    licence: Usage non commercial
+    priorite: P2
+  SRC-13:
+    titre: Copernicus DEM GLO-30
+    contenu: Pente du terrain
+    format: GeoTIFF 30 m
+    maille: Pixel
+    licence: Gratuite
+    priorite: P2
+  SRC-14:
+    titre: Liste positive EBC
+    url: https://www.european-biochar.org/en/ct/2
+    contenu: Éligibilité des résidus à la certification
+    format: PDF, saisie manuelle
+    maille: Par résidu
+    licence: Consultation libre
+    priorite: P1
+  SRC-15:
+    titre: Base Empreinte (ADEME) et GIEC
+    contenu: 'Facteurs d''émission : gazole, électricité, machines'
+    format: CSV, saisie manuelle
+    maille: Par activité
+    licence: Gratuite avec compte
+    priorite: P1
+  SRC-16:
+    titre: Littérature scientifique (section 22)
+    contenu: Ratios résidu/produit, facteurs de disponibilité, rendements de pyrolyse, coûts
+    format: Saisie manuelle
+    maille: Par résidu
+    priorite: P1
+  SRC-17:
+    titre: Enquête de terrain de l'équipe
+    contenu: Concurrence d'usage, prix d'achat, acteurs des filières
+    format: CSV saisi par l'équipe
+    maille: Province × résidu
+    licence: Interne
+    priorite: P1
+  SRC-18:
+    titre: Communiqués des directions régionales et provinciales de l'agriculture (DRA, DPA), y compris repris par la presse
+    contenu: Production et superficie par culture et par province
+    format: Communiqué, article, saisie manuelle
+    maille: Province
+    licence: Publique
+    priorite: P1
+  SRC-19:
+    titre: HCP — Cartes du RGPH (service WFS rgphencartes.hcp.ma)
+    url: http://rgphencartes.hcp.ma/
+    contenu: 'Polygones des 12 régions et 75 provinces du découpage du RGPH 2024 ; géométries, codes et noms utilisés ; indicateurs du RGPH 2014 non utilisés (population : SRC-09)'
+    format: GeoJSON (WFS)
+    maille: Région, province
+    licence: Non déclarée par le HCP ; usage interne et académique, source citée, sans redistribution publique des cartes
+    attribution: © Haut-Commissariat au Plan
+    priorite: P1
+    telechargement:
+      methode: direct
+      ressources:
+      - nom: RGPH:regions
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&typeName=RGPH:regions&propertyName=code_reg,the_geom
+        fichier: hcp_regions_natif.geojson
+      - nom: RGPH:provinces
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&typeName=RGPH:provinces&propertyName=code_reg,code_prov,the_geom
+        fichier: hcp_provinces_natif.geojson
+      - nom: RGPH:regions (noms)
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&typeName=RGPH:regions&propertyName=code_reg,libelle_fr,libelle_ar
+        fichier: hcp_regions_noms.json
+      - nom: RGPH:provinces (noms)
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&typeName=RGPH:provinces&propertyName=code_reg,code_prov,libelle_fr,libelle_ar
+        fichier: hcp_provinces_noms.json
+    fichiers:
+      hcp_regions.geojson:
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&typeName=RGPH:regions
+        date_telechargement: '2026-11-22'
+        taille_octets: 2602426
+        sha256: bf1796941c383217a85b820f7208635343ce73d322338a4c9e5a9a794971c53a
+        supprime_le: '2026-11-22'
+        note: 'supprimé le 22/11/2026, reprojection erronée (EPSG:4326 du service : polygones décalés de 15 à 30 km vers le nord) ; remplacé par les coordonnées natives'
+      hcp_provinces.geojson:
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&typeName=RGPH:provinces
+        date_telechargement: '2026-11-22'
+        taille_octets: 6991284
+        sha256: bd386106517b44e1a4bc7e65b26eacf1333cac6b0c9901e00f116c96f76e6e25
+        supprime_le: '2026-11-22'
+        note: 'supprimé le 22/11/2026, reprojection erronée (EPSG:4326 du service : polygones décalés de 15 à 30 km vers le nord) ; remplacé par les coordonnées natives'
+      hcp_regions_natif.geojson:
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&typeName=RGPH:regions&propertyName=code_reg,the_geom
+        date_telechargement: '2026-11-22'
+        taille_octets: 3540568
+        sha256: 6041952b9cd0becf79722895b873c947fc67f211d58d857ec39eb65f76405748
+      hcp_provinces_natif.geojson:
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&typeName=RGPH:provinces&propertyName=code_reg,code_prov,the_geom
+        date_telechargement: '2026-11-22'
+        taille_octets: 9236526
+        sha256: 370a367590f695839da56ebcc6e47167a083c47acb53db73ba2e071f851ab509
+      hcp_regions_noms.json:
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&typeName=RGPH:regions&propertyName=code_reg,libelle_fr,libelle_ar
+        date_telechargement: '2026-11-22'
+        taille_octets: 1972
+        sha256: 2a355fe1d9b1dd01878befa8d521c277628e51d72eec539f71ace6ea9ec3d595
+      hcp_provinces_noms.json:
+        url: http://rgphencartes.hcp.ma/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&typeName=RGPH:provinces&propertyName=code_reg,code_prov,libelle_fr,libelle_ar
+        date_telechargement: '2026-11-22'
+        taille_octets: 11653
+        sha256: c671d3e1de1ffe3b9e1e146018e556adb25b52604c9f6211f11f4a52383fad2f
+  SRC-16-FAO-AGRIS:
+    titre: FAO AGRIS
+    url: https://agris.fao.org/search/en/providers/122535/records/65df2f910f3e94b9e5d5e8ce
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R01 (taille d'olivier)
+  SRC-16-ZARAGOZA:
+    titre: Zaragoza, RSR UE
+    url: https://zaguan.unizar.es/record/78939/files/texto_completo.pdf
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R01 à R04 (résidus de taille)
+  SRC-16-SUSTAINABILITY-2022:
+    titre: Field Study and Chemical Analysis of Plant Waste in the Fez-Meknes Region (Sustainability 2022)
+    url: https://www2.mdpi.com/2071-1050/14/10/6029
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R01 et R05 (carbone, cendres, pouvoir calorifique)
+  SRC-16-PROCESSES:
+    titre: Processes (MDPI)
+    url: https://mdpi-res.com/d_attachment/processes/processes-14-01817/article_deploy/processes-14-01817.pdf
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R05 (grignons d'olive)
+  SRC-16-CORE-36014724:
+    titre: CORE
+    url: https://core.ac.uk/download/36014724.pdf
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R05 (grignons d'olive)
+  SRC-18-HESPRESS-DRA-FES-MEKNES:
+    titre: Hespress, DRA Fès-Meknès
+    url: https://fr.hespress.com/42772-production-oleicole-plus-dun-million-de-tonnes-a-fes-meknes.html
+    parent: SRC-18
+    nature: statistique de la DRA relayée par la presse
+    contenu: R05 (part des olives de Fès-Meknès destinée à la trituration)
+  SRC-16-CAHIERS-AGRICULTURES-2024:
+    titre: Valorisation des sous-produits du palmier-dattier dans les oasis du Maroc (Cahiers Agricultures 2024)
+    url: https://www.cahiersagricultures.fr/articles/cagri/abs/2024/01/cagri230057/cagri230057.html
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R06 (palmes, hampes, pétioles de palmier)
+  SRC-16-FEEDIPEDIA-687:
+    titre: Feedipedia (noyaux de dattes)
+    url: https://feedipedia.review.fao.org/node/687
+    parent: SRC-16
+    nature: base de données
+    contenu: R07 (noyaux de dattes)
+  SRC-16-ORBITAL:
+    titre: Orbital
+    url: https://periodicos.ufms.br/index.php/orbital/article/download/15646/10759
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R07 et R08 (cendres, pouvoir calorifique)
+  SRC-16-SPRINGER-2021:
+    titre: Springer 2021
+    url: https://link.springer.com/doi/10.1007/s10457-021-00607-9
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R08 (coques d'amande)
+  SRC-16-AFP-ZAWYA:
+    titre: AFP via Zawya
+    url: https://www.zawya.com/en/world/africa/shunned-by-youth-morocco-cosmetic-oil-craft-faces-uncertain-future-atc5w8z1
+    parent: SRC-16
+    nature: presse
+    contenu: R09 (production nationale d'huile d'argan)
+  SRC-16-NOTTINGHAM:
+    titre: Nottingham
+    url: https://research.nottingham.edu.cn/en/publications/a-review-on-the-utilization-of-the-by-products-generated-during-t/
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R09 (coques d'argan)
+  SRC-16-UNIFI:
+    titre: Unifi
+    url: https://flore.unifi.it/handle/2158/1415806
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R09 (coques d'argan)
+  SRC-16-HAL:
+    titre: HAL
+    url: https://hal.archives-ouvertes.fr/hal-02445750
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R09 (coques d'argan)
+  SRC-16-AGRONOMY-2022:
+    titre: Agronomy 2022
+    url: https://mdpi.com/2073-4395/12/2/447
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R10 (tiges de tomate sous serre)
+  SRC-16-CORE-344706502:
+    titre: CORE
+    url: https://core.ac.uk/download/344706502.pdf
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R10 (tiges de tomate sous serre)
+  SRC-16-YAMAMOTO:
+    titre: Yamamoto
+    url: https://world.yamamoto-ss.co.jp/ebook/eb_50.html
+    parent: SRC-16
+    nature: documentation technique
+    contenu: R11 (balles de riz)
+  SRC-16-KARUNYA:
+    titre: Karunya
+    url: https://karunya.academia.edu/dhinucivil
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R11 (balles de riz)
+  SRC-16-FEEDIPEDIA-710:
+    titre: Feedipedia (pulpes de betterave)
+    url: https://feedipedia.review.fao.org/node/710
+    parent: SRC-16
+    nature: base de données
+    contenu: R12 (pulpes de betterave)
+  SRC-16-PMC-5341195:
+    titre: PMC
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC5341195
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: R12 (pulpes de betterave)
+  SRC-16-PAPERMAKING:
+    titre: PAPERmaking!
+    url: https://online.flippingbook.com/view/203908182/117
+    parent: SRC-16
+    nature: revue technique
+    contenu: R13 (pailles céréalières)
+  SRC-16-VILAS-BOAS-2024:
+    titre: Vilas-Boas et al., 2024
+    url: https://pubs.rsc.org/en/content/articlehtml/2024/se/d3se01216f
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: Rendement en biochar (tous résidus)
+  SRC-16-MDPI-COQUE-AMANDE:
+    titre: MDPI (pyrolyse de la coque d'amande en pilote à lit fixe)
+    url: https://www.mdpi.com/2571-8797/4/3/53/html
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: Rendement en biochar de la coque d'amande
+  SRC-16-ALBURQUERQUE-2016:
+    titre: Alburquerque et al., 2016
+    url: https://agris.fao.org/search/ar/records/65dfc28d0f3e94b9e5dbf9b7
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: Qualité des biochars méditerranéens pyrolysés à 450 °C
+  SRC-16-AGRICULTURE-2023:
+    titre: Agriculture 2023
+    url: https://doaj.org/article/19fd345d65654a8c9796b9ed6e98dc07
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: Carbone du biochar de taille d'olivier à 600 °C
+  SRC-18-INFOMEDIAIRE-DRA:
+    titre: Infomédiaire (production d'olives 2017-2018 de la DRA Fès-Meknès)
+    url: https://www.infomediaire.net/?p=80746
+    parent: SRC-18
+    nature: statistique de la DRA relayée par la presse
+    contenu: Production d'olives par province de Fès-Meknès, campagne 2017-2018
+  SRC-16-LAVIEECO:
+    titre: La Vie Éco (grignon d'olive)
+    url: https://www.lavieeco.com/affaires/grignon-dolive-un-combustible-a-pouvoir-calorifique-eleve-peu-exploite-24954/
+    parent: SRC-16
+    nature: presse
+    contenu: PAR-14 (prix des grignons, 2012-2013)
+  SRC-16-ALGOMTL:
+    titre: Algomtl (offres de grignons)
+    url: https://www.algomtl.com/acheter/recherche-fournisseur-0-grignons.html
+    parent: SRC-16
+    nature: place de marché
+    contenu: PAR-14 (offres 2026 de grignons FOB depuis Fès)
+  SRC-16-MEDIAS24-SECHERESSE:
+    titre: Médias24 (prix de la paille en année normale et en sécheresse)
+    url: https://www.medias24.com/en-detresse-les-petits-agriculteurs-se-debarrassent-de-leur-betail-8033.html
+    parent: SRC-16
+    nature: presse
+    contenu: PAR-14 (prix de la botte de paille)
+  SRC-16-MEDIAS24-2026:
+    titre: Médias24, 2026 (impact du gazole sur les prix des fruits et légumes)
+    url: https://medias24.com/2026/04/21/flambee-des-fruits-et-legumes-limpact-du-gazole-reste-marginal-1663489/
+    parent: SRC-16
+    nature: presse
+    contenu: PAR-31, PAR-37, PAR-38 (camion lourd, prix du gazole)
+  SRC-16-LE360-2024:
+    titre: 'le360, « Dattes : une récolte en baisse pour la deuxième année consécutive » (03/11/2024)'
+    url: https://fr.le360.ma/economie/dattes-une-recolte-en-baisse-pour-la-deuxieme-annee-consecutive_DTKOOED47BHOLHLHQXBZHTN2TU/
+    parent: SRC-16
+    nature: presse
+    contenu: 'R06 : 7,2 millions de palmiers pour 64 000 ha (densité de plantation de secours, §8.1)'
+  SRC-16-FINANCES-NEWS:
+    titre: Finances News (transport et logistique au Maroc)
+    url: https://fnh.ma/article/actualite-economique/transport-logistique-maroc
+    parent: SRC-16
+    nature: presse
+    contenu: PAR-39 (part du carburant dans le coût du transport routier)
+  SRC-16-SAATY:
+    titre: Saaty, The Analytic Hierarchy Process (1980)
+    parent: SRC-16
+    nature: ouvrage scientifique
+    contenu: PAR-44 (ratio de cohérence de l'AHP)
+  SRC-15-ECOACTU:
+    titre: EcoActu (émissions de GES du Maroc en 2023)
+    url: https://ecoactu.ma/2023-petite-baisse-ges/
+    parent: SRC-15
+    nature: presse
+    contenu: PAR-24 (facteur d'émission de l'électricité)
+  SRC-15-CHALLENGE:
+    titre: Challenge
+    url: https://www.challenge.ma/?p=320330
+    parent: SRC-15
+    nature: presse
+    contenu: PAR-24 (facteur d'émission de l'électricité)
+  SRC-15-HESPRESS-2024:
+    titre: Hespress (part du charbon dans l'électricité en 2024)
+    url: https://fr.hespress.com/456949-456949.html
+    parent: SRC-15
+    nature: presse
+    contenu: PAR-24 (mix électrique)
+  SRC-15-GIEC-2019:
+    titre: GIEC, 2019 Refinement to the 2006 IPCC Guidelines, volume 4
+    url: https://www.ipcc-nggip.iges.or.jp/public/2019rf/vol4.html
+    parent: SRC-15
+    nature: lignes directrices
+    contenu: "PAR-20 (tableau 4AP.2), carbone organique du biochar (tableau 4AP.1), brûlage des résidus (tableaux 2.5 et 2.6)"
+    archive: "data/raw/SRC-15/ : giec2019_v4_ch2_ap4_biochar.pdf, giec2019_v4_ch2_methodes_generiques.pdf"
+  SRC-15-GIEC-AR6:
+    titre: GIEC, sixième rapport d'évaluation (AR6)
+    parent: SRC-15
+    nature: rapport d'évaluation
+    contenu: PAR-27 (potentiels de réchauffement global à 100 ans)
+  SRC-16-DYJAKON-2019:
+    titre: 'Dyjakon et García-Galindo 2019, Energies 12(8) 1513'
+    url: https://zaguan.unizar.es/record/79630/files/texto_completo.pdf
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R01 à R04 : f_col (tableau 2, CRT_LOSS) et f_eco (réduction de 50 à 75 % pour le carbone des sols)'
+    archive: data/raw/SRC-08/pages/dyjakon2019.pdf
+  SRC-16-NASSER-2014:
+    titre: 'Nasser et al. 2014, BioResources 9(1) 482-496'
+    url: https://bioresources.cnr.ncsu.edu/BioRes_09/BioRes_09_1_482_Nasser_SMAS_Fuel_Charac_Vine_Prunings_Alt_Wood_Source_4840.pdf
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R03 : humidité, carbone, cendres, PCS des sarments de 7 variétés'
+    archive: data/raw/SRC-08/pages/nasser2014_vigne.pdf
+  SRC-16-IJABE-2010:
+    titre: 'IJABE 2010, tableau 2 (d''après González et al. 2006, Fuel Processing Technology 87(2) 149-155)'
+    url: https://ijabe.org/index.php/ijabe/article/download/348/192
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R04 et R08 : carbone, cendres, humidité, PCS des tailles et coques d''amandier'
+    archive: data/raw/SRC-08/pages/ijabe2010_amandier.pdf
+  SRC-16-LAHBOUBI-2023:
+    titre: 'Lahboubi et al. 2023, Clean Energy 7(4) 747-754 (vallée du Ziz)'
+    url: https://academic.oup.com/ce/article/7/4/747/7234273
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R06 : humidité des folioles et des rafles ; carbone en contrôle'
+    archive: 'non archivée (protection anti-robot) ; valeurs vérifiées par lecture en ligne le 22/11/2026'
+  SRC-16-MANSARAY-1997:
+    titre: 'Mansaray et Ghaly 1997, Energy Sources 19(9)'
+    url: https://www.osti.gov/biblio/562296
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R11 : humidité de 6 variétés de balles de riz'
+    archive: data/raw/SRC-08/pages/osti_562296.html
+  SRC-16-TISTR:
+    titre: 'TISTR Biomass Database, Rice husk-1 (#2)'
+    url: https://www.tistr.or.th/RDSInter/ANBOR/list.php?id=2&key=R
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R11 : carbone sur sec'
+    archive: data/raw/SRC-08/pages/tistr_balle_riz.html
+  SRC-16-MANITOBA-2017:
+    titre: 'Manitoba Agriculture 2017, coût de production de la paille de blé'
+    url: https://gov.mb.ca/agriculture/farm-management/cost-production/pubs/cop-agrienergy-wheat-straw-biomass-high-residue.pdf
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R13 : humidité moyenne des balles'
+    archive: data/raw/SRC-08/pages/manitoba2017_paille.pdf
+  SRC-16-INL-2015:
+    titre: 'INL Bioenergy Library, paille de blé de référence (2015)'
+    url: https://bioenergylibrary.inl.gov/content/uploads/36/2024/12/Reference-Materials_Wheat-Straw_AH-20161128.pdf
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R13 : carbone et cendres sur sec'
+    archive: data/raw/SRC-08/pages/inl_paille_ble.pdf
+  SRC-16-ONTARIO:
+    titre: 'Gouvernement de l''Ontario, Biomass burn characteristics (CanmetENERGY)'
+    url: https://www.ontario.ca/page/biomass-burn-characteristics
+    parent: SRC-16
+    nature: publication scientifique
+    contenu: 'R13 : carbone et cendres de la paille d''orge (contrôle)'
+    archive: data/raw/SRC-08/pages/ontario_biomasse.html
+  SRC-15-GIEC-2006-V2:
+    titre: "GIEC, Lignes directrices 2006 pour les inventaires nationaux de GES, volume 2 (Énergie), chapitres 1, 2 et 3"
+    url: https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol2.html
+    parent: SRC-15
+    nature: lignes directrices
+    contenu: "Gazole et fioul lourd : CO₂, CH₄, N₂O par TJ (tableaux 1.4, 2.4, 3.2.1, 3.2.2) et PCI (tableau 1.2)"
+    archive: "data/raw/SRC-15/ : giec2006_v2_ch1_introduction.pdf, giec2006_v2_ch2_combustion_stationnaire.pdf, giec2006_v2_ch3_combustion_mobile.pdf"
+  SRC-15-GIEC-2006-V4:
+    titre: "GIEC, Lignes directrices 2006, volume 4 (AFAT), chapitres 2 et 11"
+    url: https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol4.html
+    parent: SRC-15
+    nature: lignes directrices
+    contenu: "Brûlage des résidus (tableaux 2.5, 2.6) ; N₂O des résidus laissés au champ (éq. 11.6, tableau 11.1)"
+    archive: "data/raw/SRC-15/ : giec2006_v4_ch2_methodes_generiques.pdf, giec2006_v4_ch11_n2o_sols.pdf"
+  SRC-16-EN-590:
+    titre: "Norme EN 590 : carburants pour automobiles, gazole, exigences et méthodes d'essai (CEN)"
+    url: https://standards.cencenelec.eu/
+    parent: SRC-16
+    nature: norme
+    contenu: "Masse volumique du gazole à 15 °C : 820 à 845 kg/m³ (conversion des litres en énergie)"

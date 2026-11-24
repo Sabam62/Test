@@ -1,0 +1,239 @@
+code_residu;parametre;precision;valeur;min;mode;max;loi;unite;source_id;autres_sources;annee;statut;note;ou_trouver
+R01;nom;;Taille d'olivier;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R01;codes_culture;;olivier;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R01;mode_calcul;;surface;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1 (bois de taille et palmes : surface);
+R01;rendement_surf;;1.23;1.15;;1.31;uniforme;t MS/ha/an;SRC-16-ZARAGOZA;SRC-16-FAO-AGRIS, SRC-16-SUSTAINABILITY-2022;;Hypothèse;"milieu de fourchette; moyennes nationales méditerranéennes ; la ligne cite aussi 1,31 t MS/ha/an en taille annuelle et 3,02 t MS/ha en taille bisannuelle ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R01;carbone;;48.3;;;;;% MS;SRC-16-SUSTAINABILITY-2022;;2022;Littérature;"résidus d'olivier, Fès-Meknès ; base de mesure à vérifier";
+R01;cendres;;2.2;;;;;% MS;SRC-16-SUSTAINABILITY-2022;;2022;Littérature;"résidus d'olivier, Fès-Meknès ; base de mesure à vérifier";
+R01;pci;;18.5;;;;;MJ/kg;SRC-16-SUSTAINABILITY-2022;;2022;Littérature;"résidus d'olivier, Fès-Meknès ; base de mesure à vérifier";
+R01;carbone_biochar;pyrolyse à 600 °C;70.9;;;;;% biochar;SRC-16-AGRICULTURE-2023;;2023;Littérature;;
+R01;carbone_biochar;;77;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Wood » : bois ; intervalle ± 42 % ; la mesure à 600 °C (70,9 %) prime en classe haute";
+R01;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R01;humidite;;À compléter;;;;;% masse brute;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R01;f_col;;0.96;;;;;fraction;SRC-16-DYJAKON-2019;;2019;Littérature;1 − pertes à la récolte de l'olivier (CRT_LOSS 0,04, tableau 2), contexte UE;
+R01;f_eco;;0.375;0.25;;0.5;uniforme;fraction;SRC-16-DYJAKON-2019;;2019;Hypothèse;"milieu de fourchette ; 1 − réduction de 50 à 75 % pour préserver le carbone des sols (zone méditerranéenne), « à prendre avec prudence » selon les auteurs";
+R01;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R01;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R01;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R01;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R01;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R02;nom;;Taille d'agrumes;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R02;codes_culture;;agrumes;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R02;mode_calcul;;surface;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1 (bois de taille et palmes : surface);
+R02;rendement_surf;;1.59;1.51;;1.67;uniforme;t MS/ha/an;SRC-16-ZARAGOZA;;;Hypothèse;"milieu de fourchette; moyennes espagnoles en sec et en irrigué ; échantillon de 0,60 à 5,14";
+R02;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R02;carbone_biochar;;77;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Wood » : bois ; intervalle ± 42 %";
+R02;humidite;;À compléter;;;;;% masse brute;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R02;carbone;;À compléter;;;;;% MS;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R02;cendres;;À compléter;;;;;% MS;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R02;pci;;À compléter;;;;;MJ/kg;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R02;f_col;;0.92;;;;;fraction;SRC-16-DYJAKON-2019;;2019;Littérature;1 − pertes à la récolte (pépins et agrumes, CRT_LOSS 0,08, tableau 2), contexte UE;
+R02;f_eco;;0.375;0.25;;0.5;uniforme;fraction;SRC-16-DYJAKON-2019;;2019;Hypothèse;"milieu de fourchette ; même règle que R01";
+R02;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R02;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R02;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R02;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R02;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R03;nom;;Sarments de vigne;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R03;codes_culture;;vigne;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R03;mode_calcul;;surface;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1 (bois de taille et palmes : surface);
+R03;rendement_surf;;1.205;1.09;;1.32;uniforme;t MS/ha/an;SRC-16-ZARAGOZA;;;Hypothèse;"milieu de fourchette; échantillon de 0,11 à 2,66";
+R03;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R03;carbone_biochar;;77;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Wood » : bois ; intervalle ± 42 %";
+R03;humidite;;53.93;;;;;% masse brute;SRC-16-NASSER-2014;;2014;Littérature;"moyenne des 7 variétés (calculée) ; bornes citées 42,17 à 66,00 % ; base humide";
+R03;carbone;;47.42;;;;;% MS;SRC-16-NASSER-2014;;2014;Littérature;"moyenne des 7 variétés (calculée) ; bornes 46,42 à 48,40 % ; base non précisée par le tableau";
+R03;cendres;;3.58;;;;;% MS;SRC-16-NASSER-2014;;2014;Littérature;"moyenne des 7 variétés (calculée) ; bornes 2,87 à 4,12 %";
+R03;pci;;À compléter;;;;;MJ/kg;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R03;f_col;;0.88;;;;;fraction;SRC-16-DYJAKON-2019;;2019;Littérature;1 − pertes à la récolte (vigne, CRT_LOSS 0,12, tableau 2), contexte UE;
+R03;f_eco;;0.375;0.25;;0.5;uniforme;fraction;SRC-16-DYJAKON-2019;;2019;Hypothèse;"milieu de fourchette ; même règle que R01";
+R03;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R03;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R03;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R03;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R03;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R03;pcs;;18.89;;;;;MJ/kg;SRC-16-NASSER-2014;;2014;Littérature;"PCS sur sec, moyenne des 7 variétés (calculée) ; bornes citées 18,46 à 19,19 MJ/kg";
+R04;nom;;Taille d'amandier et de rosacées;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R04;mode_calcul;;surface;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1 (bois de taille et palmes : surface);
+R04;codes_culture;;amandier, rosacees;;;;;—;CDC;;2026;Hypothèse;cultures d'origine (§8.1, décisions du 22/11/2026);
+R04;rendement_surf;amandier;0.755;0.57;;0.94;uniforme;t MS/ha/an;SRC-16-ZARAGOZA;;;Hypothèse;milieu de fourchette;
+R04;rendement_surf;rosacees;2.16;1.67;;2.65;uniforme;t MS/ha/an;SRC-16-ZARAGOZA;;;Hypothèse;milieu de fourchette;
+R04;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R04;carbone_biochar;;77;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Wood » : bois ; intervalle ± 42 %";
+R04;humidite;;À compléter;;;;;% masse brute;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R04;carbone;;51.3;;;;;% MS;SRC-16-IJABE-2010;;2006;Littérature;"tailles d'amandier (González et al. 2006, cité par IJABE 2010, tableau 2) ; base non précisée ; mesuré sur l'amandier seulement";
+R04;cendres;;1.2;;;;;% MS;SRC-16-IJABE-2010;;2006;Littérature;"tailles d'amandier ; base non précisée ; mesuré sur l'amandier seulement";
+R04;pci;;À compléter;;;;;MJ/kg;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R04;f_col;;0.9;;;;;fraction;SRC-16-DYJAKON-2019;;2019;Littérature;1 − pertes à la récolte (fruitiers hors pommier et fruits à coque, CRT_LOSS 0,10, tableau 2), contexte UE;
+R04;f_eco;;0.375;0.25;;0.5;uniforme;fraction;SRC-16-DYJAKON-2019;;2019;Hypothèse;"milieu de fourchette ; même règle que R01";
+R04;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R04;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R04;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R04;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R04;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R04;pcs;;18.2;;;;;MJ/kg;SRC-16-IJABE-2010;;2006;Littérature;"PCS (HHV) des tailles d'amandier ; base non précisée";
+R05;nom;;Grignons d'olive;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R05;codes_culture;;olivier;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R05;mode_calcul;;produit;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1;
+R05;rpr;traditionnel (presse);0.325;0.25;;0.4;uniforme;t brute/t produit;SRC-16-PROCESSES;SRC-16-CORE-36014724;;Hypothèse;"milieu de fourchette; par t d'olives triturées ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;rpr;trois phases;0.5;0.4;;0.6;uniforme;t brute/t produit;SRC-16-PROCESSES;SRC-16-CORE-36014724;;Hypothèse;"milieu de fourchette; par t d'olives triturées ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;rpr;deux phases;0.875;0.8;;0.95;uniforme;t brute/t produit;SRC-16-PROCESSES;SRC-16-CORE-36014724;;Hypothèse;"milieu de fourchette; par t d'olives triturées ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;part_transformee;Fès-Meknès;0.8;;;;;fraction;SRC-18-HESPRESS-DRA-FES-MEKNES;;;Littérature;part des olives de Fès-Meknès destinée à la trituration;
+R05;humidite;traditionnel (presse);27.5;25;;30;uniforme;% masse brute;SRC-16-PROCESSES;SRC-16-CORE-36014724;;Hypothèse;"milieu de fourchette; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;humidite;trois phases;45;;;;;% masse brute;SRC-16-PROCESSES;SRC-16-CORE-36014724;;Littérature;"sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;humidite;deux phases;70;;;;;% masse brute;SRC-16-PROCESSES;SRC-16-CORE-36014724;;Littérature;"environ 70 % ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;carbone;;54;;;;;% MS;SRC-16-SUSTAINABILITY-2022;SRC-16-PROCESSES, SRC-16-CORE-36014724;2022;Littérature;"base de mesure à vérifier ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;cendres;;4.5;;;;;% MS;SRC-16-SUSTAINABILITY-2022;SRC-16-PROCESSES, SRC-16-CORE-36014724;2022;Littérature;"base de mesure à vérifier ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;pci;;21.6;;;;;MJ/kg;SRC-16-SUSTAINABILITY-2022;SRC-16-PROCESSES, SRC-16-CORE-36014724;2022;Littérature;"base de mesure à vérifier ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R05;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R05;carbone_biochar;;À compléter;;;;;% biochar;;;;Littérature;;littérature (SRC-16) ou analyse du biochar produit, à la température de PAR-21
+R05;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R05;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R05;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R05;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R05;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R05;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R05;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R06;nom;;Palmes, hampes, pétioles de palmier;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R06;codes_culture;;palmier_dattier;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R06;mode_calcul;;nombre de pieds;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1 (palmes : nombre de pieds);
+R06;rendement_arbre;;21.2;;;;;kg MS/arbre/an;SRC-16-CAHIERS-AGRICULTURES-2024;;2024;Littérature;par palmier : 15 palmes sèches de 0,91 kg, 10 hampes de 0,39 kg, 7 pétioles de 0,43 kg, 0,62 kg de fibrillium;
+R06;densite_plantation;secours;112.5;;;;;pieds/ha;SRC-16-LE360-2024;;2024;Estimée;"7,2 millions de palmiers pour 64 000 ha ; densité de secours quand le nombre de pieds manque (§8.1)";
+R06;part_non_valorisee;Tafilalet;0.62;;;;;fraction;SRC-16-CAHIERS-AGRICULTURES-2024;;2024;Littérature;part laissée ou brûlée;
+R06;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R06;carbone_biochar;;65;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Herbaceous » : herbacées (palmes et pétioles assimilés à des feuilles) ; intervalle ± 45 %";
+R06;humidite;;11.185;7.57;;14.8;uniforme;% masse brute;SRC-16-LAHBOUBI-2023;;2023;Hypothèse;"milieu de fourchette ; folioles (7,57 %) et rafles (14,8 %) bruts de la vallée du Ziz (tableau 2)";
+R06;carbone;;À compléter;;;;;% MS;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R06;cendres;;À compléter;;;;;% MS;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R06;pci;;À compléter;;;;;MJ/kg;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R06;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R06;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R06;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R06;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R06;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R06;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R06;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R06;carbone;contrôle;41.65;40.3;;43;uniforme;% MS;SRC-16-LAHBOUBI-2023;;2023;Hypothèse;"milieu de fourchette ; contrôle, non utilisé : rafles 40,3 % et folioles 43 % de la vallée du Ziz, base non précisée";
+R07;nom;;Noyaux de dattes;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R07;codes_culture;;palmier_dattier;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R07;mode_calcul;;produit;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1;
+R07;rpr;;0.125;0.1;;0.15;uniforme;t brute/t produit;SRC-16-FEEDIPEDIA-687;SRC-16-ORBITAL;;Hypothèse;"milieu de fourchette; part du poids du fruit ; 6 à 20 % selon la variété ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R07;cendres;;1.4;;;;;% MS;SRC-16-FEEDIPEDIA-687;SRC-16-ORBITAL;;Littérature;"sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R07;pci;;18.2;;;;;MJ/kg;SRC-16-ORBITAL;SRC-16-FEEDIPEDIA-687;;Littérature;"sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R07;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R07;carbone_biochar;;74;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Nut shells, pits and stones » : noyaux ; intervalle ± 39 %";
+R07;humidite;;À compléter;;;;;% masse brute;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R07;carbone;;À compléter;;;;;% MS;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R07;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R07;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R07;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R07;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R07;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R07;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R07;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R08;nom;;Coques d'amande;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R08;codes_culture;;amandier;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R08;mode_calcul;;produit;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1;
+R08;rpr;;0.75;;;;;t brute/t produit;SRC-16-SPRINGER-2021;;2021;Hypothèse;borne basse : plus de 75 % du poids de l'amande en coque (génotypes marocains à coque dure, rendement au cassage inférieur à 25 %);
+R08;cendres;;2.3;1.1;;3.5;uniforme;% MS;SRC-16-ORBITAL;SRC-16-SPRINGER-2021;;Hypothèse;"milieu de fourchette; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R08;pci;;19.1;18.3;;19.9;uniforme;MJ/kg;SRC-16-ORBITAL;SRC-16-SPRINGER-2021;;Hypothèse;"milieu de fourchette; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R08;rendement_pyrolyse;;0.395;;;;;t biochar/t MS;SRC-16-MDPI-COQUE-AMANDE;;;Littérature;moyenne en pilote à lit fixe (39,5 %);
+R08;carbone_biochar;;74;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Nut shells, pits and stones » : coques ; intervalle ± 39 %";
+R08;humidite;;3.3;;;;;% masse brute;SRC-16-IJABE-2010;;2006;Littérature;"coques d'amande (tableau 2) ; la borne 12,9 % de l'étude d'Almería n'a pas pu être vérifiée (page inaccessible)";
+R08;carbone;;50.5;;;;;% MS;SRC-16-IJABE-2010;;2006;Littérature;"coques d'amande (tableau 2) ; base non précisée";
+R08;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R08;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R08;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R08;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R08;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R08;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R08;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R08;pcs;;18.2;;;;;MJ/kg;SRC-16-IJABE-2010;;2006;Littérature;"PCS (HHV) des coques d'amande ; base non précisée ; contrôle de la valeur pci déjà saisie";
+R09;nom;;Coques d'argan;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R09;codes_culture;;arganier;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R09;mode_calcul;;produit;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1;
+R09;rpr;;À compléter;;;;;t brute/t produit;;;;Littérature;;"part des coques dans le fruit, à chercher (SRC-16) ; repères du §14.2 : huile d'argan ≈ 5 640 t/an au niveau national, 6 kg d'amandons pour 100 kg de fruits secs (AFP via Zawya, Nottingham)"
+R09;humidite;séchées;2.4;1.5;;3.3;uniforme;% masse brute;SRC-16-NOTTINGHAM;SRC-16-UNIFI, SRC-16-HAL;;Hypothèse;"milieu de fourchette; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R09;carbone;;56.5;52;;61;uniforme;% MS;SRC-16-NOTTINGHAM;SRC-16-UNIFI, SRC-16-HAL;;Hypothèse;"milieu de fourchette; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R09;cendres;;3.75;3.3;;4.2;uniforme;% MS;SRC-16-NOTTINGHAM;SRC-16-UNIFI, SRC-16-HAL;;Hypothèse;"milieu de fourchette; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R09;pci;;20.6;;;;;MJ/kg;SRC-16-NOTTINGHAM;SRC-16-UNIFI, SRC-16-HAL;;Littérature;"sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R09;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R09;carbone_biochar;;74;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Nut shells, pits and stones » : coques ; intervalle ± 39 %";
+R09;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R09;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R09;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R09;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R09;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R09;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R09;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R10;nom;;Tiges de tomate sous serre;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R10;codes_culture;;tomate;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R10;mode_calcul;;surface;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1 (bois de taille et palmes : surface);
+R10;rendement_surf;;73;;;;;t brute/ha/an;SRC-16-AGRONOMY-2022;SRC-16-CORE-344706502;2022;Littérature;"résidus frais, système intensif d'Almería ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R10;cendres;;13;;;;;% MS;SRC-16-CORE-344706502;SRC-16-AGRONOMY-2022;;Hypothèse;"borne basse : cendres supérieures à 13 % MS ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R10;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R10;carbone_biochar;;65;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Herbaceous » : herbacées ; intervalle ± 45 %";
+R10;humidite;;À compléter;;;;;% masse brute;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R10;carbone;;À compléter;;;;;% MS;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R10;pci;;À compléter;;;;;MJ/kg;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R10;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R10;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R10;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R10;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R10;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R10;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R10;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R11;nom;;Balles de riz;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R11;codes_culture;;riz;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R11;mode_calcul;;produit;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1;
+R11;rpr;;0.2;0.17;0.2;0.24;triangulaire;t brute/t produit;SRC-16-YAMAMOTO;SRC-16-KARUNYA;;Littérature;"t de balles par t de paddy ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R11;cendres;;18;;;;;% MS;SRC-16-KARUNYA;SRC-16-YAMAMOTO;;Littérature;"environ 18 % ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R11;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R11;carbone_biochar;;49;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Rice husks and rice straw » : balles de riz ; intervalle ± 41 %";
+R11;humidite;;9.56;8.68;;10.44;uniforme;% masse brute;SRC-16-MANSARAY-1997;;1997;Hypothèse;"milieu de fourchette ; 6 variétés de balles de riz";
+R11;carbone;;45.3;;;;;% MS;SRC-16-TISTR;;2015;Littérature;Rice husk-1, base sèche (45,301 %);
+R11;pci;;À compléter;;;;;MJ/kg;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R11;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R11;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R11;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R11;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R11;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R11;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R11;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R12;nom;;Pulpes de betterave;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R12;codes_culture;;betterave;;;;;—;CDC;;2026;Hypothèse;culture d'origine (§14.2);
+R12;mode_calcul;;produit;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1;
+R12;rpr;déshydratée;0.05;;;;;t brute/t produit;SRC-16-FEEDIPEDIA-710;SRC-16-PMC-5341195;;Littérature;"50 kg de pulpe déshydratée par t de betterave ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R12;rpr;pressée;0.21;;;;;t brute/t produit;SRC-16-FEEDIPEDIA-710;SRC-16-PMC-5341195;;Littérature;"210 kg de pulpe pressée par t de betterave ; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R12;humidite;déshydratée;11;;;;;% masse brute;SRC-16-FEEDIPEDIA-710;SRC-16-PMC-5341195;;Littérature;"sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R12;cendres;;7.25;6.8;;7.7;uniforme;% MS;SRC-16-FEEDIPEDIA-710;SRC-16-PMC-5341195;;Hypothèse;"milieu de fourchette; sources de la ligne citées ensemble au §14.2 ; attribution à vérifier";
+R12;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R12;carbone_biochar;;À compléter;;;;;% biochar;;;;Littérature;;littérature (SRC-16) ou analyse du biochar produit, à la température de PAR-21
+R12;carbone;;À compléter;;;;;% MS;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R12;pci;;À compléter;;;;;MJ/kg;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R12;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R12;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R12;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R12;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R12;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R12;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R12;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R13;nom;;Pailles céréalières;;;;;—;CDC;;2026;Hypothèse;nom du résidu (§14.2);
+R13;codes_culture;;ble, riz, avoine, seigle, orge;;;;;—;CDC;;2026;Hypothèse;cultures d'origine (§8.1, décisions du 22/11/2026);
+R13;mode_calcul;;produit;;;;;—;CDC;;2026;Hypothèse;mode de la section 8.1;
+R13;rpr;;1.45;1.3;;1.6;uniforme;t brute/t produit;SRC-16-PAPERMAKING;;;Hypothèse;"milieu de fourchette; t de paille par t de grain (blé, riz, avoine, seigle) ; forte concurrence de l'alimentation animale";
+R13;rpr;orge;1.45;1.3;;1.6;uniforme;t brute/t produit;SRC-16-PAPERMAKING;;;Hypothèse;"milieu de fourchette ; coefficient retenu pour le blé, appliqué à l'orge (décision du 22/11/2026, §8.1)";
+R13;rendement_pyrolyse;;0.345;0.22;;0.47;uniforme;t biochar/t MS;SRC-16-VILAS-BOAS-2024;;2024;Hypothèse;"milieu de fourchette; tous résidus, selon la biomasse et la température";
+R13;carbone_biochar;;65;;;;;% biochar;SRC-15-GIEC-2019;;2019;Littérature;"GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, p. Ap4.2 : teneur en carbone organique du biochar de pyrolyse, classe « Herbaceous » : herbacées (la paille de riz, minoritaire, relève de 0,49) ; intervalle ± 45 %";
+R13;humidite;;11;;;;;% masse brute;SRC-16-MANITOBA-2017;;2017;Littérature;humidité moyenne des balles de paille de blé, contexte canadien;
+R13;carbone;;45.02;;;;;% MS;SRC-16-INL-2015;;2015;Littérature;"paille de blé de référence, base sèche ; appliqué à toutes les pailles (l'orge en contrôle)";
+R13;cendres;;9.07;;;;;% MS;SRC-16-INL-2015;;2015;Littérature;"paille de blé de référence, base sèche ; appliqué à toutes les pailles (l'orge en contrôle)";
+R13;pci;;À compléter;;;;;MJ/kg;;;;Littérature;;Base Phyllis (SRC-08) : docs/donnees_manuelles.md, section SRC-08
+R13;f_col;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R13;f_eco;;À compléter;;;;;fraction;;;;Littérature;;littérature (SRC-16), par exemple les études GIZ de la section 22
+R13;densite_apparente;;À compléter;;;;;kg/m³;;;;Littérature;;littérature (SRC-16) ou mesure de terrain (SRC-17)
+R13;k_col;;À compléter;;;;;DH/t MS;;;;Terrain;;enquête de terrain (SRC-17) ou devis d'un prestataire de ramassage (section 8.2)
+R13;k_pre;;À compléter;;;;;DH/t MS;;;;Terrain;;devis de broyage ou de séchage, ou fiche du fournisseur de la machine (SRC-17, section 8.2)
+R13;eligible_ebc;;À compléter;;;;;—;;;;Littérature;;liste positive EBC (SRC-14) : docs/donnees_manuelles.md, section SRC-14
+R13;scenario_reference;;À compléter;;;;;—;;;;Hypothèse;;choix de l'équipe par résidu : brûlage à l'air libre, décomposition au champ ou usage concurrent (section 8.3)
+R13;carbone;contrôle;46.9;;;;;% MS;SRC-16-ONTARIO;;;Littérature;contrôle, non utilisé : paille d'orge, base non précisée (CanmetENERGY);
+R13;cendres;contrôle;5.9;;;;;% MS;SRC-16-ONTARIO;;;Littérature;contrôle, non utilisé : paille d'orge, base non précisée (CanmetENERGY);

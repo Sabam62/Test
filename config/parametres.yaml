@@ -1,0 +1,314 @@
+# Paramètres techniques livrés avec l'outil : transcription de la section 14.3 du cahier des charges.
+#
+# Chaque valeur porte son unité et sa provenance (source_id de data/sources.yaml, année, statut).
+# Fourchette sans mode dans la source : loi uniforme, valeur = milieu, statut « Hypothèse ».
+# Valeur inconnue : « À compléter » avec ou_trouver (RG-14), jamais une valeur inventée.
+# Source « CDC » : décisions (ÉQ) et propositions (PROP) du cahier des charges.
+# Les paramètres de l'entreprise (14.1) sont dans entreprise.yaml. PAR-37 figure ici comme repère
+# affiché dans l'interface : le calcul du coût n'utilise que la valeur saisie par l'entreprise et
+# reste bloqué sans elle (RG-14).
+
+parametres:
+  PAR-02:
+    libelle: Campagne de référence (moyenne des N dernières campagnes disponibles)
+    valeur: 5
+    unite: campagnes
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: "ÉQ : moyenne des 5 dernières campagnes disponibles"
+
+  PAR-03:
+    libelle: Tirages Monte Carlo
+    valeur: 1000
+    unite: tirages
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: PROP
+
+  PAR-04:
+    libelle: Graine aléatoire
+    valeur: 42
+    unite: "—"
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: "PROP : résultats reproductibles"
+
+  PAR-14:
+    libelle: Prix d'achat des résidus déjà commercialisés
+    composantes:
+      grignons_2012:
+        valeur: 500
+        unite: DH/t
+        source_id: SRC-16-LAVIEECO
+        annee: 2012
+        statut: Littérature
+        note: "marché marocain ; la source cite « 500 puis 650 à 670 DH/t » sur 2012-2013"
+      grignons_2013:
+        valeur: 660
+        min: 650
+        max: 670
+        loi: uniforme
+        unite: DH/t
+        source_id: SRC-16-LAVIEECO
+        annee: 2013
+        statut: Hypothèse
+        note: "milieu de fourchette ; marché marocain ; la source cite « 500 puis 650 à 670 DH/t » sur 2012-2013"
+      grignons_offres_2026:
+        valeur: 77.5
+        min: 70
+        max: 85
+        loi: uniforme
+        unite: €/t FOB Fès
+        source_id: SRC-16-ALGOMTL
+        annee: 2026
+        statut: Hypothèse
+        note: milieu de fourchette ; offres de vente
+      paille_annee_normale:
+        valeur: 9.5
+        min: 7
+        max: 12
+        loi: uniforme
+        unite: DH/botte
+        source_id: SRC-16-MEDIAS24-SECHERESSE
+        statut: Hypothèse
+        note: milieu de fourchette ; année normale ; masse de la botte non donnée par la source
+      paille_secheresse:
+        valeur: 27.5
+        min: 20
+        max: 35
+        loi: uniforme
+        unite: DH/botte
+        source_id: SRC-16-MEDIAS24-SECHERESSE
+        statut: Hypothèse
+        note: milieu de fourchette ; année de sécheresse ; masse de la botte non donnée par la source
+
+  PAR-20:
+    libelle: F_perm à 100 ans par classe de température de pyrolyse
+    composantes:
+      basse:
+        valeur: 0.65
+        unite: fraction
+        source_id: SRC-15-GIEC-2019
+        annee: 2019
+        statut: Littérature
+        note: "GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.2, p. Ap4.3"
+      moyenne:
+        valeur: 0.80
+        unite: fraction
+        source_id: SRC-15-GIEC-2019
+        annee: 2019
+        statut: Littérature
+        note: "GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.2, p. Ap4.3"
+      haute:
+        valeur: 0.89
+        unite: fraction
+        source_id: SRC-15-GIEC-2019
+        annee: 2019
+        statut: Littérature
+        note: "GIEC, raffinement 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.2, p. Ap4.3"
+
+  PAR-24:
+    libelle: Émissions de l'électricité du réseau marocain
+    valeur: 0.69
+    min: 0.68
+    mode: 0.69
+    max: 0.75
+    loi: triangulaire
+    unite: kg CO₂e/kWh
+    source_id: SRC-15-ECOACTU
+    autres_sources: [SRC-15-CHALLENGE, SRC-15-HESPRESS-2024]
+    annee: 2023
+    statut: Littérature
+    note: "estimation 2023 prise comme mode ; fourchette 0,68 à 0,75 ; le charbon a fourni 60 % de l'électricité en 2024"
+
+  PAR-27:
+    libelle: PRG à 100 ans (méthode PRG100 AR6)
+    composantes:
+      co2:
+        valeur: 1
+        unite: kg CO₂e/kg
+        source_id: SRC-15-GIEC-AR6
+        annee: 2021
+        statut: Littérature
+      ch4_fossile:
+        valeur: 29.8
+        unite: kg CO₂e/kg
+        source_id: SRC-15-GIEC-AR6
+        annee: 2021
+        statut: Littérature
+      ch4_biogenique:
+        valeur: 27.0
+        unite: kg CO₂e/kg
+        source_id: SRC-15-GIEC-AR6
+        annee: 2021
+        statut: Littérature
+      n2o:
+        valeur: 273
+        unite: kg CO₂e/kg
+        source_id: SRC-15-GIEC-AR6
+        annee: 2021
+        statut: Littérature
+
+  PAR-31:
+    libelle: Charge d'un camion lourd
+    valeur: 25
+    unite: t
+    source_id: SRC-16-MEDIAS24-2026
+    annee: 2026
+    statut: Littérature
+
+  PAR-38:
+    libelle: Consommation d'un camion lourd
+    valeur: 35
+    unite: L/100 km
+    source_id: SRC-16-MEDIAS24-2026
+    annee: 2026
+    statut: Littérature
+
+  PAR-37:
+    libelle: Prix du gazole cité, repère affiché seulement (le calcul n'utilise que PAR-37 de entreprise.yaml)
+    valeur: 13.15
+    min: 10.80
+    max: 15.50
+    loi: uniforme
+    unite: DH/L
+    source_id: SRC-16-MEDIAS24-2026
+    annee: 2026
+    statut: Hypothèse
+    note: milieu de fourchette ; prix de 10,80 à 15,50 DH/L cités en 2026
+
+  PAR-39:
+    libelle: Part du carburant dans le coût du transport routier
+    valeur: 39
+    unite: "%"
+    source_id: SRC-16-FINANCES-NEWS
+    statut: Littérature
+
+  PAR-33:
+    libelle: Coût variable v du transport
+    calcul:
+      methode: consommation (PAR-38) × prix du gazole (PAR-37) ÷ part du carburant (PAR-39)
+      unite: DH/km
+      entrees:
+        - PAR-38
+        - PAR-37
+        - PAR-39
+
+  PAR-61:
+    libelle: Coût fixe F par rotation de camion (chargement, déchargement)
+    valeur: À compléter
+    unite: DH/rotation
+    statut: Terrain
+    ou_trouver: devis de transporteurs (section 14.3)
+
+  PAR-62:
+    libelle: Procédé de trituration de référence pour les grignons d'olive (R05)
+    valeur: À compléter
+    unite: "—"
+    statut: Terrain
+    choix: [traditionnel (presse), trois phases, deux phases]
+    ou_trouver: "choix de l'équipe d'après les huileries visées : ratio et humidité de residus.csv (§14.2, R05)"
+
+  PAR-63:
+    libelle: Forme des pulpes de betterave retenue (R12)
+    valeur: À compléter
+    unite: "—"
+    statut: Terrain
+    choix: [déshydratée, pressée]
+    ou_trouver: "choix de l'équipe d'après les sucreries visées : ratio et humidité de residus.csv (§14.2, R12)"
+
+  PAR-30:
+    libelle: Coefficient de détour (repli sans OSRM)
+    calcul:
+      methode: rapport médian distance routière / distance à vol d'oiseau sur la matrice OSRM
+      unite: "—"
+
+  PAR-32:
+    libelle: Volume utile d'un camion
+    valeur: À compléter
+    unite: m³
+    statut: Terrain
+    ou_trouver: fiche technique du camion retenu (section 14.3)
+
+  PAR-35:
+    libelle: Rayon R du critère C3
+    valeur: 100
+    unite: km
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: "PROP : valeur de départ, réglable"
+
+  PAR-36:
+    libelle: Rayon R_v des critères E1 et E2
+    valeur: 50
+    unite: km
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: "PROP : valeur de départ, réglable"
+
+  PAR-40:
+    libelle: Méthode de classement par défaut
+    valeur: somme_ponderee
+    unite: "—"
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: "PROP : somme pondérée"
+
+  PAR-41:
+    libelle: Concentration de la loi de Dirichlet
+    valeur: 50
+    unite: "—"
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: PROP
+
+  PAR-42:
+    libelle: Seuil de robustesse (probabilité d'être 1er)
+    valeur: 60
+    unite: "%"
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: PROP
+
+  PAR-43:
+    libelle: Seuil d'alerte de corrélation entre critères
+    valeur: 0.8
+    unite: coefficient de Pearson, en valeur absolue
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: PROP
+
+  PAR-44:
+    libelle: Ratio de cohérence AHP maximal
+    valeur: 0.10
+    unite: "—"
+    source_id: SRC-16-SAATY
+    annee: 1980
+    statut: Littérature
+
+  PAR-45:
+    libelle: Poids par défaut
+    valeur: egaux_entre_axes_puis_entre_criteres
+    unite: "%"
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: "PROP : égaux entre axes actifs, puis entre critères d'un même axe"
+
+  PAR-54:
+    libelle: Poids λ du bilan carbone dans l'objectif du mélange
+    valeur: 0
+    unite: DH/t CO₂e
+    source_id: CDC
+    annee: 2026
+    statut: Hypothèse
+    note: "PROP : 0 = coût seul"

@@ -1,0 +1,8 @@
+# Démonstration 3 : grande unité (docs/demo.md).
+nom: Grande unité
+description: >-
+  Unité de forte capacité, qui accepte un prix livré plus élevé pour élargir son bassin.
+base: demo-1
+entreprise:
+  PAR-01: {valeur: 40000, note: "grande unité, supposée"}
+  PAR-34: {valeur: 1500, note: "prix plafond relevé au-dessus de celui de la démonstration 1 (1 200 DH/t MS), supposé"}

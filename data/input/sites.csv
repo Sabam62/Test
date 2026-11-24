@@ -1,0 +1,6 @@
+id_site;nom;type;lon;lat;code_province;impose;source_id;annee;statut;note;ou_trouver
+AGP-MEKNES;Agropolis de Meknès;agropole;-5.4532051;33.8344655;;oui;SRC-06;2026;Estimée;"arrêt « Agropolis » de l'extrait OpenStreetMap, à l'entrée de l'agropole ; usine d'Atlantic Biochar, site imposé (H4)";
+AGP-BERKANE;Agropole de Berkane;agropole;À compléter;À compléter;;non;;;Terrain;;"aucune coordonnée publiée par une source officielle (recherche du 23/11/2026) ; située dans la commune de Madagh selon la presse (le360) : plan de MedZ, l'aménageur, ou relevé GPS"
+AGP-TADLA;Agropole de Tadla;agropole;À compléter;À compléter;;non;;;Terrain;;"aucune coordonnée publiée par une source officielle (recherche du 23/11/2026) : plan de MedZ, l'aménageur, ou relevé GPS"
+AGP-SOUSS;Agropole du Souss;agropole;À compléter;À compléter;;non;;;Terrain;;"aucune coordonnée publiée par une source officielle (recherche du 23/11/2026) : plan de MedZ, l'aménageur, ou relevé GPS"
+AGP-LOUKKOS;Agropole du Loukkos;agropole;À compléter;À compléter;;non;;;Terrain;;"aucune coordonnée publiée par une source officielle (recherche du 23/11/2026) ; commune de Zouada, province de Larache, selon la presse (le360) : plan de MedZ, l'aménageur, ou relevé GPS"

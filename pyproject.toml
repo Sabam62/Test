@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ab-dss"
+version = "0.1.0"
+description = "Outil d'aide à la décision pour l'implantation d'unités de biochar au Maroc (Atlantic Biochar)"
+requires-python = ">=3.11,<3.12"
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+include = ["ab_dss*", "api*", "src*", "scripts*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = ["frontend"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "ANN", "D", "SIM", "RUF"]
+ignore = [
+    "D203",  # incompatible avec D211
+    "D213",  # incompatible avec D212
+    "RUF001", "RUF002", "RUF003",  # caractères typographiques français (espaces insécables, guillemets)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D", "ANN"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "donnees_reelles: test sur les données complètes de data/processed/ (ignoré si absentes)",
+    "lent: test qui démarre un processus ou dure plusieurs secondes",
+]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

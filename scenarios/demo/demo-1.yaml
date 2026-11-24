@@ -1,0 +1,12 @@
+# Démonstration 1 : unité de référence à Meknès (docs/demo.md).
+nom: Unité de référence à Meknès
+description: >-
+  Unité de capacité moyenne près de Meknès, pyrolyse à 450 °C, prix plafond au niveau du prix
+  des grignons ramené à la matière sèche (1 200 DH/t MS), gazole à 12 DH/L.
+entreprise:
+  PAR-01: {valeur: 10000, note: "capacité moyenne d'une unité, supposée"}
+  PAR-21: {valeur: 450, note: "classe moyenne de température (F_perm du GIEC 2019)"}
+  PAR-34:
+    valeur: 1200
+    note: "prix des grignons ramené à la matière sèche : 650 DH/t brute (borne basse de 2013, PAR-14, SRC-16-LAVIEECO) ÷ (1 − 0,45 d'humidité, trois phases) = 1 182 DH/t MS, arrondi à 1 200"
+  PAR-37: {valeur: 12, note: "prix du gazole supposé"}

@@ -1,0 +1,137 @@
+# Contrôles avant import (RG-19).
+#
+# Pour chaque colonne :
+# - min et max : domaine physique ou de définition (une fraction est comprise entre 0 et 1, une
+#   teneur entre 0 et 100 %, un tonnage est positif). Une valeur hors du domaine est rejetée.
+# - plausible (facultatif) : {min, max, motif}, plage des valeurs vraisemblables, à fixer par
+#   l'entreprise à partir d'une source. Une valeur hors de cette plage est signalée et doit être
+#   confirmée. Aucune plage plausible n'est livrée : elle n'est jamais inventée.
+# - variations : une production 10 fois supérieure à la campagne précédente est à confirmer.
+# Unités : celles des tables de la section 13.
+
+fourchettes:
+  residus:
+    rpr:
+      min: 0
+      unite: t brute/t produit
+      motif: un ratio résidu/produit est positif
+    rendement_surf:
+      min: 0
+      unite: t brute/ha/an
+      motif: un rendement surfacique est positif
+    humidite:
+      min: 0
+      max: 100
+      unite: "% masse brute"
+      motif: une humidité est comprise entre 0 et 100 % (RG-19)
+    f_col:
+      min: 0
+      max: 1
+      unite: fraction
+      motif: un taux de collecte est une fraction (section 8.1)
+    f_eco:
+      min: 0
+      max: 1
+      unite: fraction
+      motif: une part prélevable est une fraction (section 8.1)
+    carbone:
+      min: 0
+      max: 100
+      unite: "% MS"
+      motif: une teneur est comprise entre 0 et 100 %
+    cendres:
+      min: 0
+      max: 100
+      unite: "% MS"
+      motif: une teneur est comprise entre 0 et 100 %
+    pci:
+      min: 0
+      unite: MJ/kg
+      motif: un pouvoir calorifique est positif
+    densite_apparente:
+      min: 0
+      unite: kg/m³
+      motif: une densité est positive
+    rendement_pyrolyse:
+      min: 0
+      max: 1
+      unite: t biochar/t MS
+      motif: la masse de biochar ne dépasse pas la masse sèche entrante
+  production:
+    production_t:
+      min: 0
+      unite: t
+      motif: une production est positive
+    superficie_ha:
+      min: 0
+      unite: ha
+      motif: une superficie est positive
+  concurrence:
+    part_utilisee:
+      min: 0
+      max: 1
+      unite: fraction
+      motif: une part déjà utilisée est une fraction (section 8.1)
+    prix_achat_dh_t:
+      min: 0
+      unite: DH/t
+      motif: un prix d'achat est positif
+  # Facteurs d'émission et données d'activité (section 8.3) : positifs. Le contrôle ne
+  # s'applique qu'aux lignes de l'unité indiquée.
+  facteurs_emission:
+    kg_co2: {min: 0, unite: kg/TJ, motif: un facteur d'émission est positif}
+    kg_ch4_fossile: {min: 0, unite: kg/TJ, motif: un facteur d'émission est positif}
+    kg_ch4_bio: {min: 0, unite: kg/t MS, motif: un facteur d'émission est positif}
+    kg_n2o: {min: 0, unite: kg/TJ, motif: un facteur d'émission est positif}
+    densite: {min: 0, unite: kg/L, motif: une masse volumique est positive}
+    facteur_combustion: {min: 0, max: 1, unite: fraction, motif: un facteur de combustion est une fraction}
+    kg_co2e: {min: 0, unite: kg CO₂e/kWh, motif: un facteur d'émission est positif}
+    consommation_electricite: {min: 0, unite: kWh/t MS, motif: une consommation est positive}
+    consommation_gazole: {min: 0, unite: L/t MS, motif: une consommation est positive}
+    distance_km: {min: 0, unite: km, motif: une distance est positive}
+    pci: {min: 0, unite: MJ/kg, motif: un pouvoir calorifique est positif}
+  calendrier:
+    mois:
+      min: 0
+      max: 1
+      unite: fraction
+      motif: la part mensuelle est une fraction ; les 12 mois somment à 1 (section 8.1)
+  # Paramètres de l'entreprise (section 14.1) : bornes de définition seulement ; aucune valeur
+  # n'est proposée à la place de l'entreprise (RG-15).
+  entreprise:
+    PAR-01: {min: 0, unite: t MS/an, motif: une capacité est positive}
+    PAR-21: {min: 0, unite: °C, motif: une température de pyrolyse est positive}
+    PAR-34: {min: 0, unite: DH/t MS, motif: un prix plafond est positif}
+    PAR-59: {min: 0, unite: km, motif: une distance est positive}
+    PAR-52: {min: 0, max: 100, unite: "% MS", motif: une teneur en cendres est comprise entre 0 et 100 %}
+    PAR-53: {min: 0, max: 100, unite: "%", motif: une humidité est comprise entre 0 et 100 %}
+    PAR-51: {min: 0, max: 100, unite: "% de K", motif: une part est comprise entre 0 et 100 %}
+    PAR-55: {min: 0, unite: DH/t biochar, motif: un prix de vente est positif}
+    PAR-56: {min: 0, unite: DH/t CO₂e, motif: un prix du crédit carbone est positif}
+    PAR-37: {min: 0, unite: DH/L, motif: un prix du gazole est positif}
+  prix_observes:
+    prix:
+      min: 0
+      unite: selon le produit
+      motif: un prix est positif
+
+variations:
+  - table: production
+    colonne: production_t
+    facteur_max: 10
+    reference: campagne précédente, même province et même culture
+    motif: une production 10 fois supérieure à l'année précédente est à confirmer (RG-19)
+
+# Valeurs aberrantes du rapport de contrôle (UC-DAT-02) : une valeur à plus de « ecarts_types »
+# écarts types de la moyenne de sa série (même source, grandeur, culture et maille) est signalée
+# et conservée ; elle est à vérifier dans la source.
+aberrantes:
+  ecarts_types: 3
+  # Taille minimale d'une série pour calculer un écart type.
+  effectif_minimal: 3
+  motif: valeur à plus de 3 écarts types de la moyenne de sa série (UC-DAT-02)
+
+# Désagrégation (RG-04, UC-DAT-04) : écart relatif admis entre la somme des provinces et le
+# total parent (régional ou national), 0,1 % d'après le critère d'acceptation.
+desagregation:
+  tolerance_somme: 0.001

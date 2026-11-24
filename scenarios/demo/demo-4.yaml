@@ -1,0 +1,10 @@
+# Démonstration 4 : priorité climat (docs/demo.md).
+nom: Priorité climat
+description: >-
+  Comme la démonstration 1, avec une pyrolyse à 600 °C et un poids fort sur le bilan carbone net.
+base: demo-1
+entreprise:
+  PAR-21: {valeur: 600, note: "classe haute de température (F_perm du GIEC 2019)"}
+decision:
+  poids: {D1: 5}
+  note: "poids 5 sur D1 · Bilan carbone net, 1 sur les autres critères"

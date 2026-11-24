@@ -1,0 +1,102 @@
+# ACV, bilan climat (section 8.3, lot 4) : réglages lus par src/acv/.
+#
+# Aucune constante métier dans le code (ENF-08). Brightway 2.5 sans ecoinvent : base d'avant-plan
+# construite par code, flux élémentaires de la biosphère de bw2io (liste libre de droits des flux
+# d'ecoinvent, sans données d'inventaire), méthode PRG100 AR6 créée par code (PAR-27).
+
+projet: atlantic_biochar
+base_avant_plan: ab_foreground
+base_biosphere: biosphere3
+methode: [Atlantic Biochar, PRG100 AR6, changement climatique]
+unite_methode: kg CO2-eq
+
+# Flux élémentaires utilisés (nom et compartiment de la biosphère) et composante de PAR-27 qui
+# donne leur facteur de caractérisation. Le CO₂ biogénique est neutre : il n'a pas de flux.
+flux:
+  co2_fossile: {nom: "Carbon dioxide, fossil", compartiment: [air], prg: "PAR-27:co2"}
+  ch4_fossile: {nom: "Methane, fossil", compartiment: [air], prg: "PAR-27:ch4_fossile"}
+  ch4_biogenique: {nom: "Methane, non-fossil", compartiment: [air], prg: "PAR-27:ch4_biogenique"}
+  n2o: {nom: "Dinitrogen monoxide", compartiment: [air], prg: "PAR-27:n2o"}
+
+# Arrière-plan agrégé (section 8.3) : une activité par ligne de facteurs_emission.csv, pour une
+# unité de référence ; chaque paramètre de « echanges » devient un échange vers un flux, multiplié
+# par les paramètres de « multiplicateurs » de la même activité et par « facteur ». Un facteur en
+# kg CO₂e (électricité, amont du gazole) est porté par le flux de CO₂ fossile (PRG = 1).
+# Gazole : facteurs du GIEC en kg/TJ × PCI (MJ/kg) × masse volumique (kg/L) × 10⁻⁶ TJ/MJ = kg/L.
+# Fioul de substitution : kg/TJ × 10⁻⁶ = kg par MJ de chaleur remplacée (substitution en énergie).
+# Brûlage : kg par t MS brûlée × facteur de combustion = kg par t MS de résidu.
+arriere_plan:
+  electricite_reseau: {unite: kilowatt hour, echanges: {kg_co2e: co2_fossile}}
+  gazole_combustion:
+    unite: litre
+    echanges: {kg_co2: co2_fossile, kg_ch4_fossile: ch4_fossile, kg_n2o: n2o}
+    multiplicateurs: [pci, densite]
+    facteur: 1.0e-6 # TJ par MJ
+  gazole_amont: {unite: litre, echanges: {kg_co2e: co2_fossile}}
+  fioul_substitution:
+    unite: megajoule
+    echanges: {kg_co2: co2_fossile, kg_ch4_fossile: ch4_fossile, kg_n2o: n2o}
+    facteur: 1.0e-6 # TJ par MJ
+  pyrolyse: {unite: ton, echanges: {kg_ch4_bio: ch4_biogenique, kg_n2o: n2o}}
+  brulage_air_libre:
+    unite: ton
+    echanges: {kg_ch4_bio: ch4_biogenique, kg_n2o: n2o}
+    multiplicateurs: [facteur_combustion]
+  decomposition_champ: {unite: ton, echanges: {kg_ch4_bio: ch4_biogenique, kg_n2o: n2o}}
+
+# Données d'activité de facteurs_emission.csv (code_activite, parametre).
+activites:
+  gazole_collecte: [collecte, consommation_gazole] # L/t MS
+  electricite_broyage: [broyage, consommation_electricite] # kWh/t MS
+  electricite_pyrolyse: [pyrolyse, consommation_electricite] # kWh/t biochar
+  gazole_epandage: [epandage, consommation_gazole] # L/t biochar
+  distance_biochar: [transport_biochar, distance_km] # km
+
+# Paramètres de la section 14 utilisés.
+parametres:
+  temperature: PAR-21 # entreprise : °C ou classe
+  permanence: PAR-20 # composantes basse, moyenne, haute
+  consommation_camion: PAR-38 # L/100 km
+  charge_camion: PAR-31 # t (camion du biochar, chargé à pleine charge)
+  volume_camion: PAR-32 # m³ (charge utile en résidus, section 8.2)
+
+# Classes de température du GIEC (raffinement 2019, volume 4, appendice 4) : température minimale
+# de chaque classe, en °C. Une température sous la classe basse n'a pas de permanence définie.
+classes_temperature:
+  basse: 350
+  moyenne: 450
+  haute: 600
+source_classes: SRC-15-GIEC-2019
+
+# Teneur en carbone du biochar (residus.csv, carbone_biochar) : une valeur mesurée à une
+# température donnée (précision) ne vaut que pour la classe de cette température.
+precisions_carbone_biochar:
+  "pyrolyse à 600 °C": haute
+
+# Conversions.
+# Rapport 44/12 de la formule du bilan net (section 8.3) : masses molaires du CO₂ et du C, g/mol.
+masse_molaire_co2: 44
+masse_molaire_c: 12
+kg_par_tonne: 1000
+litres_par_100_km: 100
+trajets_par_rotation: 2 # aller chargé, retour à vide (section 8.2)
+
+# Scénarios de référence de residus.csv (scenario_reference) et activité qui les représente.
+# « sans substitution » (décision de l'équipe du 23/11/2026) : aucune activité, E_ref = 0, pour un
+# résidu dont l'usage actuel comme combustible n'est documenté par aucune source.
+scenarios_reference:
+  "brûlage à l'air libre": brulage_air_libre
+  "décomposition au champ": decomposition_champ
+  "usage concurrent": fioul_substitution
+  "sans substitution": null
+
+# Étapes du bilan (section 8.3), dans l'ordre d'affichage.
+etapes:
+  E_col: Collecte
+  E_pre: Prétraitement
+  E_tr: Transport vers l'usine
+  E_pyr: Pyrolyse
+  E_ep: Transport et épandage du biochar
+
+standard_par_defaut: neutre
+unite_fonctionnelle: 1 t de biochar produite et épandue

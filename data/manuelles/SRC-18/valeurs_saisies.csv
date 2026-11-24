@@ -1,0 +1,47 @@
+fichier;niveau;region;province;inclut;culture;campagne;periode;variable;valeur;unite;nature;methode;indice;remarque
+fes-meknes_2017-2018_olivier.html;province;Fès-Meknès;Taounate;;olivier;2017-2018;campagne;production;370028;t;realisee;citee;370028;Seconde source : fes-meknes_2017-2018_olivier_hespress.html
+fes-meknes_2017-2018_olivier.html;province;Fès-Meknès;Taza;;olivier;2017-2018;campagne;production;198720;t;realisee;citee;198720;Seconde source : fes-meknes_2017-2018_olivier_hespress.html
+fes-meknes_2017-2018_olivier.html;province;Fès-Meknès;El Hajeb;;olivier;2017-2018;campagne;production;110180;t;realisee;citee;110180;Seconde source : fes-meknes_2017-2018_olivier_hespress.html
+fes-meknes_2017-2018_olivier.html;province;Fès-Meknès;Fès;"Fès;Moulay Yacoub";olivier;2017-2018;campagne;production;99528;t;realisee;citee;99528;Hypothèse : Moulay Yacoub compté avec Fès (absent de la liste, somme des 8 = total régional). Seconde source : fes-meknes_2017-2018_olivier_hespress.html
+fes-meknes_2017-2018_olivier.html;province;Fès-Meknès;Meknès;;olivier;2017-2018;campagne;production;97699;t;realisee;citee;97699;Seconde source : fes-meknes_2017-2018_olivier_hespress.html
+fes-meknes_2017-2018_olivier.html;province;Fès-Meknès;Sefrou;;olivier;2017-2018;campagne;production;95385;t;realisee;citee;95385;Seconde source : fes-meknes_2017-2018_olivier_hespress.html
+fes-meknes_2017-2018_olivier.html;province;Fès-Meknès;Boulemane;;olivier;2017-2018;campagne;production;54046;t;realisee;citee;54046;Seconde source : fes-meknes_2017-2018_olivier_hespress.html
+fes-meknes_2017-2018_olivier.html;province;Fès-Meknès;Ifrane;;olivier;2017-2018;campagne;production;1987.5;t;realisee;citee;1987,5;Seconde source : fes-meknes_2017-2018_olivier_hespress.html
+fes-meknes_2017-2018_olivier.html;region;Fès-Meknès;;;olivier;2017-2018;campagne;production;1027573;t;realisee;citee;1.027.573;
+fes-meknes_2018-2019_olivier.html;province;Fès-Meknès;Taounate;;olivier;2018-2019;campagne;production;287410;t;previsionnelle;citee;287410;
+fes-meknes_2018-2019_olivier.html;province;Fès-Meknès;Taza;;olivier;2018-2019;campagne;production;158160;t;previsionnelle;citee;158160;
+fes-meknes_2018-2019_olivier.html;province;Fès-Meknès;Meknès;;olivier;2018-2019;campagne;production;77880;t;previsionnelle;citee;77880;
+fes-meknes_2018-2019_olivier.html;province;Fès-Meknès;Fès;"Fès;Moulay Yacoub";olivier;2018-2019;campagne;production;74936;t;previsionnelle;citee;74936;Hypothèse : Moulay Yacoub compté avec Fès
+fes-meknes_2018-2019_olivier.html;province;Fès-Meknès;Sefrou;;olivier;2018-2019;campagne;production;73555;t;previsionnelle;citee;73555;
+fes-meknes_2018-2019_olivier.html;province;Fès-Meknès;El Hajeb;;olivier;2018-2019;campagne;production;68130;t;previsionnelle;citee;68130;
+fes-meknes_2018-2019_olivier.html;province;Fès-Meknès;Boulemane;;olivier;2018-2019;campagne;production;48260;t;previsionnelle;citee;48260;
+fes-meknes_2018-2019_olivier.html;province;Fès-Meknès;Ifrane;;olivier;2018-2019;campagne;production;1875;t;previsionnelle;citee;1875;
+fes-meknes_2018-2019_olivier.html;region;Fès-Meknès;;;olivier;2018-2019;campagne;production;790206;t;previsionnelle;citee;790.206;
+fes-meknes_2018-2019_olivier.html;region;Fès-Meknès;;;olivier;;non_precisee;superficie_productive;334145;ha;realisee;citee;334.145 ha;"dont plus de 294 000 ha en bour ; près de 40 % à Taounate"
+marrakech-safi_2020-2021_olivier.html;province;Marrakech-Safi;El Kelâa des Sraghna;;olivier;2020-2021;campagne;production;150250;t;previsionnelle;citee;150.250 tonnes;150 000 t irrigué + 250 t bour
+marrakech-safi_2020-2021_olivier.html;province;Marrakech-Safi;El Kelâa des Sraghna;;olivier;2019-2020;campagne;production;180772;t;realisee;somme_citees;"175.500 tonnes ; 5.272 tonnes";somme de l'irrigué (175 500 t) et du bour (5 272 t) de la saison précédente
+marrakech-safi_2018-2019_olivier.html;region;Marrakech-Safi;;;olivier;2018-2019;campagne;production;487000;t;previsionnelle;citee;487.000 tonnes;campagne déduite : article de novembre 2018, « campagne actuelle », règle de campagne oléicole
+marrakech-safi_2024_olivier.html;province;Marrakech-Safi;El Kelâa des Sraghna;;olivier;;non_precisee;superficie_totale;90000;ha;realisee;citee;90.000 hectares;production variant de 60 000 à 230 000 t selon les saisons
+fes-meknes_2021-2022_olivier.html;province;Fès-Meknès;Boulemane;;olivier;;non_precisee;superficie_totale;15400;ha;realisee;citee;15 400 ha;
+fes-meknes_2021-2022_olivier.html;province;Fès-Meknès;Boulemane;;olivier;2022-2023;annee_civile;production;13100;t;realisee;citee;13 100 T;récolte de l'année civile 2022, campagne par la règle de campagne oléicole
+fes-meknes_2021-2022_olivier.html;province;Fès-Meknès;Boulemane;;olivier;2021-2022;annee_civile;production;39300;t;realisee;citee;39 300 T;récolte de l'année civile 2021, campagne par la règle de campagne oléicole
+oriental_2015-2016_olivier.pdf;province;Oriental;Guercif;;olivier;2015-2016;campagne;production;50000;t;realisee;citee;50000 tonnes;« le 1/3 de la production totale de l'olivier dans la région »
+oriental_2015-2016_olivier.pdf;province;Oriental;Guercif;;olivier;;non_precisee;superficie_totale;26588;ha;realisee;citee;26 588 ha;monographie publiée en 2017
+oriental_2023-2024_olivier.html;region;Oriental;;;olivier;2023-2024;campagne;production;208000;t;previsionnelle;citee;208.000 tonnes;
+oriental_2023-2024_palmier.html;province;Oriental;Figuig;;palmier_dattier;2023-2024;campagne;production;8000;t;previsionnelle;citee;8.000 tonnes;
+beni-mellal-khenifra_2024-2025_olivier.html;province;Béni Mellal-Khénifra;Fquih Ben Salah;;olivier;2024-2025;campagne;superficie_totale;26208.5;ha;realisee;citee;26.208,5 ha;99,5 % irrigué
+beni-mellal-khenifra_2024-2025_olivier.html;region;Béni Mellal-Khénifra;;;olivier;2023-2024;campagne;production;81000;t;realisee;citee;81.000 t;
+beni-mellal-khenifra_2024-2025_olivier.html;region;Béni Mellal-Khénifra;;;olivier;2024-2025;campagne;production;96000;t;previsionnelle;citee;96.000 t;
+tanger-tetouan-al-hoceima_2018_olivier.html;region;Tanger-Tétouan-Al Hoceima;;;olivier;2018-2019;annee_civile;production;240000;t;previsionnelle;citee;240 000 tonnes;« campagne de 2018 » : récolte de l'automne 2018, campagne par la règle de campagne oléicole
+tanger-tetouan-al-hoceima_2018_olivier.html;region;Tanger-Tétouan-Al Hoceima;;;olivier;2017-2018;annee_civile;production;192000;t;realisee;citee;192 000 tonnes;récolte 2017, campagne par la règle de campagne oléicole
+national_2023-2024_palmier.html;region;Drâa-Tafilalet;;;palmier_dattier;2023-2024;campagne;production;91500;t;realisee;citee;91.500 tonnes;page à enregistrer à la main (403)
+national_2023-2024_palmier.html;region;Souss-Massa;;;palmier_dattier;2023-2024;campagne;production;12500;t;realisee;citee;12.500 tonnes;page à enregistrer à la main (403)
+national_2023-2024_palmier.html;region;Oriental;;;palmier_dattier;2023-2024;campagne;production;7500;t;realisee;citee;7.500 tonnes;page à enregistrer à la main (403)
+national_2023-2024_palmier.html;region;Guelmim-Oued Noun;;;palmier_dattier;2023-2024;campagne;production;3500;t;realisee;citee;3.500 tonnes;page à enregistrer à la main (403)
+national_2023-2024_palmier.html;national;;;;palmier_dattier;2023-2024;campagne;production;115000;t;realisee;citee;115.000 tonnes;page à enregistrer à la main (403)
+national_2023_olivier.html;national;;;;olivier;2023-2024;annee_civile;production;1070000;t;previsionnelle;citee;1,07 million de tonnes;« au titre de l'automne 2023 »
+national_2023_olivier.html;region;Fès-Meknès;;;olivier;2023-2024;annee_civile;part_production_nationale;27;%;previsionnelle;citee;(27%);à multiplier par le total national de la même page
+national_2023_olivier.html;region;Oriental;;;olivier;2023-2024;annee_civile;part_production_nationale;19;%;previsionnelle;citee;(19 %);à multiplier par le total national de la même page
+national_2023_olivier.html;region;Tanger-Tétouan-Al Hoceima;;;olivier;2023-2024;annee_civile;part_production_nationale;17;%;previsionnelle;citee;(17%);à multiplier par le total national de la même page
+fes-meknes_2023_olivier.html;province;Fès-Meknès;Taounate;;olivier;;non_precisee;superficie_totale;150000;ha;realisee;citee;150 000 hectares;
+fes-meknes_2023_olivier.html;province;Fès-Meknès;Taounate;;olivier;;moyenne;production;200000;t;realisee;citee;200.000 tonnes;production annuelle moyenne

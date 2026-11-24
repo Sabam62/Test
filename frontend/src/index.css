@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Geist";
+  src: url("./theme/polices/Geist-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("./theme/polices/Geist-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-paper font-texte text-texte text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-titre font-medium;
+  }
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-ember;
+  }
+}
+
+@layer components {
+  /* Message « Ctrl + molette pour zoomer » de MapLibre, habillé des jetons (section 12.3). */
+  .maplibregl-cooperative-gesture-screen {
+    @apply bg-charcoal/60 font-texte text-secondaire text-white;
+  }
+  .maplibregl-ctrl-group {
+    @apply rounded-bouton shadow-douce;
+  }
+}
+
+@layer utilities {
+  .chiffres {
+    font-variant-numeric: tabular-nums;
+  }
+}

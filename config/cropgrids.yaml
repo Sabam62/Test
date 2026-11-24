@@ -1,0 +1,25 @@
+# Découpage de CROPGRIDS (SRC-04) sur l'emprise du Maroc, avant la désagrégation (RG-04).
+#
+# L'archive mondiale (environ 808 Mo) est lue sans être modifiée (RG-01) ; seule l'emprise du
+# Maroc est écrite dans data/processed/. Si l'archive a été supprimée, le script la retélécharge.
+
+archive: CROPGRIDSv1.08_NC_maps.zip
+grille_pays: Countries_2018.nc
+
+# Numéros de la grille Countries_2018.nc (attribut « List of countries ») qui couvrent ensemble
+# les 12 régions et 75 provinces du découpage du RGPH 2024 : 137 (« MA, MAR ») et 218 (« EH, ESH »).
+# Vérifié le 22/11/2026 : Casablanca et Oujda portent 137, Laâyoune et Dakhla portent 218.
+codes_pays: [137, 218]
+
+# Marge autour des pixels de ces codes, en pixels de 0,05°. 4 pixels (0,2°) couvrent largement
+# l'écart constaté avec les polygones du HCP lus dans leur système natif : 20,77° N au plus au sud
+# contre 20,825° N pour la grille (un pixel), 35,92° N au nord contre 35,925° N.
+marge_pixels: 4
+
+# Variables conservées pour chaque culture (unités de CROPGRIDS : ha ; qual et set sans unité).
+variables: [harvarea, croparea, qual, set]
+
+# Compression zlib du fichier de sortie (1 = rapide, 9 = plus compact).
+compression: 4
+
+sortie: cropgrids_maroc.nc

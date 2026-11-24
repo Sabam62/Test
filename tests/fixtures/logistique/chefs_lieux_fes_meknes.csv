@@ -1,0 +1,10 @@
+id_site;nom;type;lon;lat;code_province;impose;source_id;annee;statut;note
+CL-3131;Boulemane;chef-lieu;-4.7300908;33.365969;3131;False;SRC-06;2026;Estimée;ville OpenStreetMap « Boulemane » (town), même nom que la province
+CL-3231;Fès;chef-lieu;-5.0161926;34.0346534;3231;False;SRC-06;2026;Estimée;ville OpenStreetMap « Fès » (city), même nom que la province
+CL-3591;Moulay Yacoub;chef-lieu;-5.179435000000001;34.087468;3591;False;SRC-06;2026;Estimée;"chef-lieu administratif (chef-lieu administratif (décision de l'équipe du 23/11/2026) ; à confirmer sur le décret de création de la province) ; position du lieu OpenStreetMap « Moulay Yacoub » (village)"
+CL-3451;Sefrou;chef-lieu;-4.833336;33.824898000000005;3451;False;SRC-06;2026;Estimée;ville OpenStreetMap « Sefrou » (town), même nom que la province
+CL-3171;El Hajeb;chef-lieu;-5.371938;33.690156;3171;False;SRC-06;2026;Estimée;ville OpenStreetMap « El Hajeb » (town), même nom que la province
+CL-3271;Ifrane;chef-lieu;-5.107408;33.527605;3271;False;SRC-06;2026;Estimée;ville OpenStreetMap « Ifrane » (town), même nom que la province
+CL-3061;Meknès;chef-lieu;-5.5321582000000005;33.8984131;3061;False;SRC-06;2026;Estimée;ville OpenStreetMap « Meknès » (city), même nom que la province
+CL-3531;Taounate;chef-lieu;-4.635994;34.538476;3531;False;SRC-06;2026;Estimée;ville OpenStreetMap « Taounate » (town), même nom que la province
+CL-3561;Taza;chef-lieu;-4.010104;34.230155;3561;False;SRC-06;2026;Estimée;ville OpenStreetMap « Taza » (city), même nom que la province

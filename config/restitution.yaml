@@ -1,0 +1,13 @@
+# Restitution (lot 6) : exports CSV et Excel (UC-RES-02) et fiche site (UC-RES-01).
+
+excel:
+  longueur_nom_feuille: 31 # limite d'Excel
+  largeur_min: 10 # largeur des colonnes, en caractères
+  largeur_max: 60
+  marge: 2
+  taille_titre: 14
+csv:
+  separateur: ";"
+  chiffres_significatifs: 10
+# Nombre de lignes du classement des gisements exportées.
+lignes_gisements: 2000

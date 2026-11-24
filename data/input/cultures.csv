@@ -1,0 +1,26 @@
+code_culture;nom;code_cropgrids;source_id;note
+olivier;Olivier;olive;SRC-04;
+agrumes;Agrumes;orange;SRC-04;
+agrumes;Agrumes;tangetc;SRC-04;
+agrumes;Agrumes;lemonlime;SRC-04;
+agrumes;Agrumes;grapefruitetc;SRC-04;
+agrumes;Agrumes;citrusnes;SRC-04;
+vigne;Vigne;grape;SRC-04;
+amandier;Amandier;almond;SRC-04;« Almonds, with shell » (FAO)
+rosacees;Rosacées fruitières;apple;SRC-04;rosacées fruitières de CROPGRIDS, liste validée par l'équipe (22/11/2026)
+rosacees;Rosacées fruitières;pear;SRC-04;rosacées fruitières de CROPGRIDS, liste validée par l'équipe (22/11/2026)
+rosacees;Rosacées fruitières;quince;SRC-04;rosacées fruitières de CROPGRIDS, liste validée par l'équipe (22/11/2026)
+rosacees;Rosacées fruitières;apricot;SRC-04;rosacées fruitières de CROPGRIDS, liste validée par l'équipe (22/11/2026)
+rosacees;Rosacées fruitières;cherry;SRC-04;rosacées fruitières de CROPGRIDS, liste validée par l'équipe (22/11/2026)
+rosacees;Rosacées fruitières;sourcherry;SRC-04;rosacées fruitières de CROPGRIDS, liste validée par l'équipe (22/11/2026)
+rosacees;Rosacées fruitières;peachetc;SRC-04;rosacées fruitières de CROPGRIDS, liste validée par l'équipe (22/11/2026)
+rosacees;Rosacées fruitières;plum;SRC-04;rosacées fruitières de CROPGRIDS, liste validée par l'équipe (22/11/2026)
+palmier_dattier;Palmier dattier;date;SRC-04;
+tomate;Tomate;tomato;SRC-04;CROPGRIDS couvre toute la tomate, pas seulement la tomate sous serre
+riz;Riz;rice;SRC-04;« Rice, paddy » (FAO)
+betterave;Betterave sucrière;sugarbeet;SRC-04;
+ble;Blé;wheat;SRC-04;
+avoine;Avoine;oats;SRC-04;
+seigle;Seigle;rye;SRC-04;
+orge;Orge;barley;SRC-04;ajoutée à R13 avec le coefficient du blé (décision du 22/11/2026)
+arganier;Arganier;;CDC;absent de CROPGRIDS

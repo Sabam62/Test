@@ -1,0 +1,9 @@
+# Fins de ligne : identiques sous Windows, macOS et Linux.
+#
+# Les tables de données (CSV) sont livrées octet pour octet : aucune conversion, pour que leur
+# empreinte SHA-256 (RG-05, RG-17) soit la même sur tous les postes.
+*.csv -text
+# Scripts bash : LF obligatoire, y compris dans Git Bash sous Windows.
+*.sh text eol=lf
+# Scripts PowerShell : CRLF, fin de ligne native de Windows.
+*.ps1 text eol=crlf

@@ -1,0 +1,119 @@
+# Préparation des données (UC-DAT-01 à 04) : python -m scripts.prepare.
+#
+# Lecture de data/raw/ et de data/manuelles/ (jamais modifiés, RG-01) et écriture de
+# data/processed/.
+
+# --- Surfaces CROPGRIDS par province (clé de répartition de la RG-04) ----------------------
+#
+# « croparea » = surface cultivée (physique) de CROPGRIDS, en ha, année 2020 ; « harvarea » =
+# surface récoltée. La RG-04 répartit « au prorata de la surface CROPGRIDS pour cette culture » :
+# la surface cultivée est retenue (pour les cultures pérennes du Maroc, les deux sont égales ;
+# vérifié sur l'olivier le 22/11/2026 : 928 164 ha dans les deux variables).
+cropgrids:
+  variable: croparea
+  # Système de coordonnées de la grille CROPGRIDS (degrés, WGS 84).
+  crs: "EPSG:4326"
+  annee: 2020
+  # Fraction minimale d'un pixel dans une province pour être comptée (bruit de découpage des
+  # contours) : technique, pas métier. 0 = toute intersection compte.
+  fraction_minimale: 0
+  sortie: surfaces_cropgrids.parquet
+  # Surface cultivée de toutes les cultures CROPGRIDS par province : dénominateur de la densité
+  # du gisement (critère A2, décision du 22/11/2026).
+  sortie_agricole: surface_agricole.parquet
+
+# --- SRC-18 : communiqués des DRA et DPA saisis par l'équipe -------------------------------
+#
+# Dossier lu dans data/manuelles/ (versionné dans Git) ; les pages archivées qu'ils citent
+# restent dans data/raw/SRC-18/, hors de Git.
+# valeurs_saisies.csv : une ligne par valeur citée ; valeurs_verifiees.csv : la même ligne avec
+# l'extrait de la page archivée et le résultat du contrôle (« vérifiée… » ou « non vérifiée… ») ;
+# references.csv : adresse, organisme, date et source parente de chaque page archivée.
+src18:
+  dossier: SRC-18
+  saisies: valeurs_saisies.csv
+  verifiees: valeurs_verifiees.csv
+  references: references.csv
+  # Début du texte de la colonne « verification » d'une ligne utilisable.
+  verification_valide: vérifiée
+  # Variables utilisées par la désagrégation, et nom de la grandeur de la table production.
+  variables:
+    production: production_t
+    superficie_totale: superficie_ha
+  # Unité attendue de chaque variable saisie.
+  unites:
+    production: t
+    superficie_totale: ha
+    superficie_productive: ha
+    part_production_nationale: "%"
+  # Variables lues mais non utilisées par la RG-04, avec le motif affiché dans le rapport.
+  non_utilisees:
+    superficie_productive: superficie productive, distincte de la superficie plantée de SRC-01
+    part_production_nationale: part d'un total national, pas un total réel (RG-04)
+  # Périodes admises ; seules « campagne » et « annee_civile » (RG-04, règle de campagne)
+  # portent une campagne utilisable.
+  periodes_avec_campagne: [campagne, annee_civile]
+  periodes_sans_campagne:
+    non_precisee: campagne non précisée par la source
+    moyenne: moyenne pluriannuelle, sans campagne
+
+# --- SRC-01 : Open Data Maroc, Production végétale 2010-2022 (total national) ----------------
+#
+# Fichier long : Occurrence (campagne « 2017/2018 »), Filière, Produit, Indicateur, Valeur.
+# Une campagne n'est utilisée que si chaque produit et indicateur n'y figure qu'une fois : en
+# 2020/2021 et 2021/2022 le fichier contient des centaines de lignes par produit sans colonne
+# géographique (vérifié le 22/11/2026) ; leur somme n'est pas un total national vérifiable.
+src01:
+  dossier: SRC-01
+  fichier: production_vegetale_2010_2022.xlsx
+  colonnes:
+    campagne: Occurrence
+    filiere: Filière
+    produit: Produit
+    indicateur: Indicateur
+    valeur: Valeur
+  separateur_campagne: /
+  indicateurs:
+    "Production-T (Tonnes)": production_t
+    "Superficie (Ha)": superficie_ha
+  # Produits de SRC-01 additionnés pour chaque culture de cultures.csv (libellés du fichier).
+  # Rosacées : liste validée par l'équipe (§8.1) ; le griottier n'a pas de ligne dans SRC-01.
+  # Seigle et arganier : aucun produit dans SRC-01.
+  produits:
+    olivier: [Olivier]
+    agrumes:
+      - Autres agrumes
+      - Citron
+      - Orange_Autres
+      - Orange_Maroc late
+      - Orange_Navel
+      - Orange_Navel lane late
+      - Orange_Navel late
+      - Orange_Navelina
+      - Orange_Salustiana
+      - Orange_Washignton sanguine
+      - Pamplemousse
+      - Petit fruit_Autres
+      - Petit fruit_Clémentine
+      - Petit fruit_Fortune
+      - Petit fruit_Nador cott
+      - Petit fruit_Nour
+      - Petit fruit_Nova
+      - Petit fruit_Nules
+      - Petit fruit_Ortanique
+    vigne: [Raisin de cuve, Raisin de table]
+    amandier: [Amandier]
+    rosacees: [Pommier, Poirier, Cognassier, Abricotier, Cerisier, Pêcher-nectarine, Prunier]
+    palmier_dattier: [Palmier dattier]
+    tomate: [Tomate]
+    riz: [Riz]
+    betterave: [Betterave à sucre]
+    ble: [Blé dur, Blé tendre]
+    avoine: [Avoine]
+    orge: [Orge]
+
+# --- Sorties de data/processed/ ------------------------------------------------------------
+sorties:
+  observations: observations.parquet
+  production: production.parquet
+  rapport: rapport_controle.html

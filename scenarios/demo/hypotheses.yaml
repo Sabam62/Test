@@ -1,0 +1,228 @@
+# Valeurs manquantes complétées pour les scénarios de démonstration (config/demo.yaml).
+#
+# Règle : aucune donnée réelle n'est modifiée. Seules les valeurs « À compléter » des tables
+# sont complétées, dans la copie de travail de la démonstration ; une valeur déjà connue n'est
+# jamais remplacée (elle est ignorée et signalée). Les productions, surfaces et facteurs connus
+# restent ceux des sources.
+#
+# Statut : « Littérature » quand la valeur est publiée et appliquée telle quelle (source citée) ;
+# « Hypothèse » sinon (valeur plausible, ou valeur publiée transposée, source citée si elle
+# existe). La note de chaque valeur reçoit la mention « valeur de démonstration ».
+# Liste commentée : docs/demo.md.
+#
+# Résidus complétés : R01 à R06, R08 et R11. R07, R09, R10, R12 et R13 restent bloqués
+# (humidité, ratio ou production manquants) : la démonstration ne crée pas de gisement.
+
+# Publications citées, ajoutées au manifeste des sources de la copie de travail seulement.
+sources:
+  DEMO:
+    titre: Valeur de démonstration (scenarios/demo, docs/demo.md)
+    url: docs/demo.md
+    nature: hypothèse de démonstration
+  DEMO-LEGRAS-FMA:
+    titre: Legras — la benne à fond mouvant FMA emporte 70 mètres cubes (Réussir)
+    url: https://www.reussir.fr/legras-la-benne-fond-mouvant-fma-emporte-70-metres-cubes
+    parent: SRC-16
+    nature: fiche constructeur (presse agricole)
+  DEMO-ADEME-BC-23-5:
+    titre: Banque de France — méthodologie fret (facteurs de la Base Carbone ADEME v23.5)
+    url: https://www.banque-france.fr/system/files/2026-06/Methodologie_fret.pdf
+    parent: SRC-15
+    nature: document méthodologique
+  DEMO-SPINELLI-2010:
+    titre: Spinelli et Picchi (2010), Industrial harvesting of olive tree pruning residue (Bioresource Technology)
+    url: https://research.usc.edu.au/esploro/outputs/journalArticle/Industrial-harvesting-of-olive-tree-pruning/99448839902621
+    parent: SRC-16
+    nature: publication scientifique
+  DEMO-JHA-SINGH-2007:
+    titre: Physical and Thermal Properties of Untreated and Chemically Treated Rice Husk (AGRIS)
+    url: https://agris.fao.org/search/en/records/6474734ebf943c8c798305f1
+    parent: SRC-16
+    nature: publication scientifique
+  DEMO-CMBIOMASS:
+    titre: CM Biomass — Olive Cake (Olive Pomace), fiche produit
+    url: https://cmbiomass.com/products/olive-cake
+    parent: SRC-16
+    nature: fiche fournisseur
+
+# Paramètres techniques à compléter (config/parametres.yaml), réglés dans la copie de travail.
+reglages:
+  PAR-61:
+    valeur: 300
+    note: "chargement et déchargement d'un camion, environ 2 h de chauffeur et d'engin ; aucun devis publié trouvé"
+  PAR-32:
+    valeur: 70
+    statut: Littérature
+    source_id: DEMO-LEGRAS-FMA
+    annee: 2024
+    note: "semi-remorque à fond mouvant Legras FMA, version 70 m³ (gamme 52, 62 et 70 m³)"
+  PAR-62:
+    valeur: trois phases
+    note: "procédé de trituration retenu pour la démonstration (R05)"
+
+# Propriétés des résidus (data/input/residus.csv), clé code_residu → parametre.
+residus:
+  R01:
+    humidite: {valeur: 40, note: "taille fraîche d'olivier au ramassage"}
+    densite_apparente: {valeur: 200, note: "taille broyée en plaquettes ; densité mesurée selon UNI-EN 15103 dans la littérature, valeur non lue"}
+    k_col:
+      valeur: 432
+      source_id: DEMO-SPINELLI-2010
+      annee: 2010
+      note: "récolte et broyage industriels de la taille d'olivier : 40 €/t anhydre en moyenne (22 à 70), converti à 10,8 DH/€ (taux supposé)"
+    k_pre: {valeur: 0, note: "broyage compris dans la récolte (k_col)"}
+    eligible_ebc: {valeur: oui, note: "résidu de taille agricole, supposé sur la liste positive EBC (à vérifier, SRC-14)"}
+    scenario_reference: {valeur: brûlage à l'air libre, note: "devenir supposé de la taille non valorisée"}
+  R02:
+    humidite: {valeur: 45, note: "taille fraîche d'agrumes au ramassage"}
+    carbone: {valeur: 47, note: "bois de taille, ordre de grandeur des autres tailles de la table (47 à 51 % MS)"}
+    cendres: {valeur: 4, note: "bois de taille avec feuilles"}
+    pci: {valeur: 17.5, note: "bois de taille, ordre de grandeur des autres tailles de la table (17,5 à 18,5 MJ/kg)"}
+    densite_apparente: {valeur: 200, note: "taille broyée en plaquettes, comme R01"}
+    k_col:
+      valeur: 432
+      source_id: DEMO-SPINELLI-2010
+      annee: 2010
+      note: "coût de la taille d'olivier (R01) transposé aux agrumes"
+    k_pre: {valeur: 0, note: "broyage compris dans la récolte (k_col)"}
+    eligible_ebc: {valeur: oui, note: "résidu de taille agricole, supposé sur la liste positive EBC (à vérifier, SRC-14)"}
+    scenario_reference: {valeur: brûlage à l'air libre, note: "devenir supposé de la taille non valorisée"}
+  R03:
+    pci: {valeur: 17.8, note: "sarments, ordre de grandeur des autres tailles de la table"}
+    densite_apparente: {valeur: 200, note: "sarments broyés en plaquettes, comme R01"}
+    k_col:
+      valeur: 432
+      source_id: DEMO-SPINELLI-2010
+      annee: 2010
+      note: "coût de la taille d'olivier (R01) transposé aux sarments"
+    k_pre: {valeur: 0, note: "broyage compris dans la récolte (k_col)"}
+    eligible_ebc: {valeur: oui, note: "résidu de taille agricole, supposé sur la liste positive EBC (à vérifier, SRC-14)"}
+    scenario_reference: {valeur: brûlage à l'air libre, note: "devenir supposé des sarments non valorisés"}
+  R04:
+    humidite: {valeur: 40, note: "taille fraîche d'amandier au ramassage"}
+    pci: {valeur: 18, note: "bois de taille, ordre de grandeur des autres tailles de la table"}
+    densite_apparente: {valeur: 200, note: "taille broyée en plaquettes, comme R01"}
+    k_col:
+      valeur: 432
+      source_id: DEMO-SPINELLI-2010
+      annee: 2010
+      note: "coût de la taille d'olivier (R01) transposé à l'amandier"
+    k_pre: {valeur: 0, note: "broyage compris dans la récolte (k_col)"}
+    eligible_ebc: {valeur: oui, note: "résidu de taille agricole, supposé sur la liste positive EBC (à vérifier, SRC-14)"}
+    scenario_reference: {valeur: brûlage à l'air libre, note: "devenir supposé de la taille non valorisée"}
+  R05:
+    carbone_biochar:
+      valeur: 74
+      source_id: SRC-15-GIEC-2019
+      annee: 2019
+      note: "GIEC 2019, vol. 4, ch. 2, appendice 4, tableau 4AP.1, classe « Nut shells, pits and stones » ; rattachement des grignons (noyaux) à cette classe supposé"
+    f_col: {valeur: 0.95, note: "grignons produits à l'huilerie, pertes de manutention faibles"}
+    f_eco: {valeur: 1, note: "coproduit industriel : aucun retour au sol requis"}
+    densite_apparente:
+      valeur: 675
+      source_id: DEMO-CMBIOMASS
+      annee: 2025
+      note: "milieu des densités annoncées par des fournisseurs de grignons (650 et 700 kg/m³), non mesurées"
+    k_col: {valeur: 20, note: "chargement à l'huilerie"}
+    k_pre: {valeur: 100, note: "séchage partiel des grignons trois phases"}
+    eligible_ebc: {valeur: oui, note: "coproduit de transformation agricole, supposé sur la liste positive EBC (à vérifier, SRC-14)"}
+    scenario_reference:
+      valeur: usage concurrent
+      source_id: CDC
+      annee: 2026
+      note: "usage documenté : grignons achetés par les hammams, les chaudières et les briqueteries (cahier des charges, section 2) ; substitution par le fioul"
+  R06:
+    carbone:
+      valeur: 41.65
+      source_id: SRC-16-LAHBOUBI-2023
+      annee: 2023
+      note: "valeur « contrôle » de la même source (ligne carbone · contrôle), reprise pour la ligne principale"
+    cendres: {valeur: 8, note: "palmes de palmier, résidu herbacé riche en minéraux"}
+    pci: {valeur: 16.5, note: "palmes de palmier"}
+    f_col: {valeur: 0.7, note: "palmes dispersées dans les palmeraies"}
+    f_eco: {valeur: 0.5, note: "moitié laissée sur place (paillage, usages locaux)"}
+    densite_apparente: {valeur: 150, note: "palmes broyées"}
+    k_col: {valeur: 250, note: "ramassage manuel dans les palmeraies"}
+    k_pre: {valeur: 100, note: "broyage des palmes"}
+    eligible_ebc: {valeur: oui, note: "résidu agricole, supposé sur la liste positive EBC (à vérifier, SRC-14)"}
+    scenario_reference: {valeur: brûlage à l'air libre, note: "devenir supposé des palmes non valorisées"}
+  R08:
+    f_col: {valeur: 0.9, note: "coques produites aux unités de cassage"}
+    f_eco: {valeur: 1, note: "coproduit industriel : aucun retour au sol requis"}
+    densite_apparente: {valeur: 350, note: "coques en vrac ; aucune densité de coques seules trouvée"}
+    k_col: {valeur: 20, note: "chargement à l'unité de cassage"}
+    k_pre: {valeur: 0, note: "coques sèches, sans prétraitement"}
+    eligible_ebc: {valeur: oui, note: "coproduit de transformation agricole, supposé sur la liste positive EBC (à vérifier, SRC-14)"}
+    scenario_reference: {valeur: sans substitution, note: "usage actuel comme combustible documenté par aucune source : E_ref = 0"}
+  R11:
+    pci: {valeur: 14.5, note: "balles de riz, riches en silice"}
+    f_col: {valeur: 0.9, note: "balles produites aux rizeries"}
+    f_eco: {valeur: 1, note: "coproduit industriel : aucun retour au sol requis"}
+    densite_apparente:
+      valeur: 102.25
+      source_id: DEMO-JHA-SINGH-2007
+      annee: 2007
+      note: "milieu de 98 à 106,5 kg/m³ (balles non traitées, humidité 5 à 35 %)"
+    k_col: {valeur: 20, note: "chargement à la rizerie"}
+    k_pre: {valeur: 0, note: "balles sèches, sans prétraitement"}
+    eligible_ebc: {valeur: oui, note: "coproduit de transformation agricole, supposé sur la liste positive EBC (à vérifier, SRC-14)"}
+    scenario_reference: {valeur: sans substitution, note: "usage actuel comme combustible documenté par aucune source : E_ref = 0"}
+
+# Concurrence d'usage et prix d'achat (data/input/concurrence.csv), au niveau national.
+concurrence:
+  R01:
+    part_utilisee: {valeur: 0.3, note: "part supposée déjà utilisée (bois de feu)"}
+    prix_achat_dh_t: {valeur: 0, note: "taille aujourd'hui sans valeur marchande (section 8.2)"}
+  R02:
+    part_utilisee: {valeur: 0.2, note: "part supposée déjà utilisée (bois de feu)"}
+    prix_achat_dh_t: {valeur: 0, note: "taille aujourd'hui sans valeur marchande (section 8.2)"}
+  R03:
+    part_utilisee: {valeur: 0.3, note: "part supposée déjà utilisée (bois de feu)"}
+    prix_achat_dh_t: {valeur: 0, note: "sarments aujourd'hui sans valeur marchande (section 8.2)"}
+  R04:
+    part_utilisee: {valeur: 0.3, note: "part supposée déjà utilisée (bois de feu)"}
+    prix_achat_dh_t: {valeur: 0, note: "taille aujourd'hui sans valeur marchande (section 8.2)"}
+  R05:
+    part_utilisee: {valeur: 0.6, note: "grignons largement vendus comme combustible"}
+  R06:
+    part_utilisee: {valeur: 0.3, note: "part supposée déjà utilisée (artisanat, bois de feu)"}
+    prix_achat_dh_t: {valeur: 0, note: "palmes aujourd'hui sans valeur marchande (section 8.2)"}
+  R08:
+    part_utilisee: {valeur: 0.5, note: "coques vendues comme combustible"}
+    prix_achat_dh_t: {valeur: 300, note: "prix supposé du combustible de coques, en vrac"}
+  R11:
+    part_utilisee: {valeur: 0.3, note: "part supposée déjà utilisée (litière, combustible)"}
+    prix_achat_dh_t: {valeur: 150, note: "prix supposé des balles en vrac"}
+
+# Facteurs d'émission et données d'activité (data/input/facteurs_emission.csv).
+facteurs_emission:
+  gazole_amont:
+    kg_co2e:
+      valeur: 0.609
+      statut: Littérature
+      source_id: DEMO-ADEME-BC-23-5
+      annee: 2023
+      note: "Base Carbone ADEME v23.5, gazole routier, production du carburant en amont (cité par la méthodologie fret de la Banque de France)"
+  broyage:
+    consommation_electricite: {valeur: 30, note: "broyeur électrique fixe"}
+  pyrolyse:
+    kg_ch4_bio: {valeur: 0.5, note: "pyrolyse avec combustion des gaz, émissions résiduelles faibles"}
+    kg_n2o: {valeur: 0.05, note: "pyrolyse avec combustion des gaz, émissions résiduelles faibles"}
+    consommation_electricite: {valeur: 150, note: "auxiliaires du réacteur (alimentation, ventilation)"}
+  collecte:
+    consommation_gazole: {valeur: 3, note: "tracteur et broyeur de ramassage"}
+  epandage:
+    consommation_gazole: {valeur: 2, note: "épandeur agricole"}
+  transport_biochar:
+    distance_km: {valeur: 50, note: "distance moyenne supposée de l'usine aux parcelles des clients"}
+
+# Mois de disponibilité (data/input/calendrier.csv, table vide) : parts mensuelles, somme 1.
+calendrier:
+  R01: {mois: [0.25, 0.25, 0.25, 0.25, 0, 0, 0, 0, 0, 0, 0, 0], note: "taille après la récolte des olives, janvier à avril"}
+  R02: {mois: [0, 0.25, 0.25, 0.25, 0.25, 0, 0, 0, 0, 0, 0, 0], note: "taille des agrumes, février à mai"}
+  R03: {mois: [0.34, 0.33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.33], note: "taille de la vigne, décembre à février"}
+  R04: {mois: [0.25, 0.25, 0, 0, 0, 0, 0, 0, 0, 0, 0.25, 0.25], note: "taille de l'amandier, novembre à février"}
+  R05: {mois: [0.3, 0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0.2, 0.3], note: "campagne de trituration, novembre à février"}
+  R06: {mois: [0.09, 0.09, 0.09, 0.09, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08], note: "palmes taillées toute l'année"}
+  R08: {mois: [0, 0, 0, 0, 0, 0, 0, 0.2, 0.2, 0.2, 0.2, 0.2], note: "cassage après la récolte, août à décembre"}
+  R11: {mois: [0.25, 0, 0, 0, 0, 0, 0, 0, 0, 0.25, 0.25, 0.25], note: "usinage du riz, octobre à janvier"}

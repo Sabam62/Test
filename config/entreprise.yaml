@@ -1,0 +1,78 @@
+# Paramètres de l'entreprise : section 14.1 du cahier des charges.
+#
+# Modèle livré vide, suivi par Git et jamais modifié par l'outil : aucune valeur n'est supposée
+# à la place d'Atlantic Biochar (RG-15). Les valeurs saisies dans l'onglet « Paramètres »
+# (section Entreprise), datées et signées, sont écrites dans config/entreprise.local.yaml,
+# fichier local ignoré par Git et lu par-dessus ce modèle. Les paramètres « obligatoire: true » (RG-15 : PAR-01, PAR-21, PAR-34, PAR-37) :
+# tant que l'un d'eux est vide, l'onglet Paramètres porte un badge « n à renseigner » et chaque
+# écran qui en dépend affiche un état vide qui renvoie au champ.
+# Les poids et seuils des critères sont enregistrés avec chaque scénario (scenarios/).
+#
+# type : nombre (bornes plausibles dans controles.yaml, section « entreprise »), choix (liste
+# « choix »), nombre_ou_choix (PAR-21 : °C ou classe de température de PAR-20), sites (PAR-57 :
+# listes « imposes » et « exclus » d'identifiants de sites).
+
+date_modification: null
+auteur: null
+
+parametres:
+  PAR-01:
+    libelle: Capacité visée K d'une unité
+    unite: t MS/an
+    type: nombre
+    obligatoire: true
+    valeur: null
+  PAR-21:
+    libelle: Température de pyrolyse du procédé
+    unite: °C ou classe
+    type: nombre_ou_choix
+    obligatoire: true
+    choix: [basse, moyenne, haute]
+    valeur: null
+  PAR-34:
+    libelle: Prix plafond livré à l'usine
+    unite: DH/t MS
+    type: nombre
+    obligatoire: true
+    valeur: null
+  PAR-59:
+    libelle: Distance maximale d'approvisionnement acceptée
+    unite: km
+    type: nombre
+    valeur: null
+  PAR-52:
+    libelle: Cendres moyennes maximales du mélange
+    unite: "% MS"
+    type: nombre
+    valeur: null
+  PAR-53:
+    libelle: Humidité moyenne maximale du mélange
+    unite: "%"
+    type: nombre
+    valeur: null
+  PAR-51:
+    libelle: Part maximale d'un résidu dans le mélange
+    unite: "% de K"
+    type: nombre
+    valeur: null
+  PAR-55:
+    libelle: Prix de vente du biochar
+    unite: DH/t biochar
+    type: nombre
+    valeur: null
+  PAR-56:
+    libelle: Prix du crédit carbone
+    unite: DH/t CO₂e
+    type: nombre
+    valeur: null
+  PAR-57:
+    libelle: Sites imposés ou exclus
+    unite: liste
+    type: sites
+    valeur: null
+  PAR-37:
+    libelle: Prix du gazole
+    unite: DH/L
+    type: nombre
+    obligatoire: true
+    valeur: null

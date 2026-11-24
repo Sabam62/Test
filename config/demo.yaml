@@ -1,0 +1,33 @@
+# Scénarios de démonstration (soutenance) : scenarios/demo/, liste des valeurs dans docs/demo.md.
+#
+# Charger un scénario de démonstration ne modifie aucune donnée de l'utilisateur : l'outil
+# construit une copie de travail (« miroir ») dans data/cache/demo/<scénario>/, y saisit les
+# paramètres de l'entreprise du scénario et complète les seules valeurs « À compléter » avec
+# les hypothèses de scenarios/demo/hypotheses.yaml (une valeur connue n'est jamais remplacée),
+# puis travaille sur cette copie. config/entreprise.local.yaml, les réglages et les versions de
+# data/ ne sont jamais écrits. « Quitter la démonstration » revient aux données réelles.
+
+# Dossier des scénarios de démonstration (relatif à la racine du dépôt, suivi par Git).
+dossier: scenarios/demo
+# Valeurs manquantes communes à tous les scénarios.
+hypotheses: hypotheses.yaml
+# Copies de travail, relatives à la racine (data/cache/ est ignoré par Git).
+miroirs: data/cache/demo
+# Fichier local (dans config/) qui désigne le scénario chargé ; absent hors démonstration.
+pointeur: demo.local.yaml
+# Fichier écrit dans le config/ de la copie de travail : la copie se sait en démonstration.
+marqueur: demo.actif.yaml
+# Fichiers locaux de l'utilisateur jamais copiés dans la copie de travail.
+fichiers_exclus:
+  - entreprise.local.yaml
+  - parametres_modifies.yaml
+  - decision.local.yaml
+  - demo.local.yaml
+# Auteur des saisies et des versions de la copie de travail.
+auteur: démonstration
+# Projet Brightway de la copie de travail : le projet de l'utilisateur n'est jamais modifié.
+suffixe_projet_brightway: _demo
+# Mention ajoutée à la note de chaque valeur complétée.
+mention: valeur de démonstration
+# Bandeau affiché sur tous les écrans et en tête des exports et de la fiche site.
+bandeau: Démonstration — paramètres d'hypothèse, pas un résultat réel

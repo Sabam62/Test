@@ -1,0 +1,6 @@
+# Démonstration 5 : gazole cher (docs/demo.md).
+nom: Gazole cher
+description: Comme la démonstration 1, avec le gazole à 15,50 DH/L.
+base: demo-1
+entreprise:
+  PAR-37: {valeur: 15.5, note: "prix du gazole cité par Médias24 (2026)"}

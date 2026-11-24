@@ -1,0 +1,11 @@
+# Réglages techniques de l'API locale (pas de valeurs métier).
+
+# Simplification des contours servis en GeoJSON à l'interface, en degrés (Douglas-Peucker,
+# topologie préservée) : allège la carte sans changer les surfaces calculées.
+simplification_geojson_degres: 0.005
+# Attribution affichée sous chaque carte des contours du HCP (SRC-19).
+attribution_cartes: © Haut-Commissariat au Plan
+# Nombre maximal de lignes renvoyées par page d'une table.
+lignes_par_page: 50
+# Carte des gisements : nombre de classes de la légende (quantiles des valeurs affichées).
+classes_carte: 5

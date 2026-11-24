@@ -1,0 +1,22 @@
+niveau;variante;code;source_id;methode;note
+province;فحص - انجرة;1227;SRC-19;nom des cartes;colonne libelle_ar des cartes du HCP
+province;Prefecture of Tangier Assilah;1511;SRC-05;rapprochement spatial;"unité MA010006 ; point intérieur dans le polygone 1511"
+province;طنجة - أصيلا;1511;SRC-19;nom des cartes;colonne libelle_ar des cartes du HCP
+province;Mdiq-Fnidq;1573;SRC-19;nom des cartes;colonne libelle_fr des cartes du HCP
+province;وجدة - أنكاد;2411;SRC-19;nom des cartes;colonne libelle_ar des cartes du HCP
+province;Meknès;3061;SRC-18-INFOMEDIAIRE-DRA;saisie;province citée au §14.2 du cahier (production d'olives 2017-2018, DRA Fès-Meknès)
+province;Boulemane;3131;SRC-18-INFOMEDIAIRE-DRA;saisie;province citée au §14.2 du cahier (production d'olives 2017-2018, DRA Fès-Meknès)
+province;El Hajeb;3171;SRC-18-INFOMEDIAIRE-DRA;saisie;province citée au §14.2 du cahier (production d'olives 2017-2018, DRA Fès-Meknès)
+province;Fès;3231;SRC-18-INFOMEDIAIRE-DRA;saisie;province citée au §14.2 du cahier (production d'olives 2017-2018, DRA Fès-Meknès)
+province;Sefrou;3451;SRC-18-INFOMEDIAIRE-DRA;saisie;province citée au §14.2 du cahier (production d'olives 2017-2018, DRA Fès-Meknès)
+province;Taounate;3531;SRC-18-INFOMEDIAIRE-DRA;saisie;province citée au §14.2 du cahier (production d'olives 2017-2018, DRA Fès-Meknès)
+province;Taza;3561;SRC-18-INFOMEDIAIRE-DRA;saisie;province citée au §14.2 du cahier (production d'olives 2017-2018, DRA Fès-Meknès)
+province;Province de Fquih Ben Saleh;5255;SRC-05;rapprochement spatial;"unité MA001003 ; point intérieur dans le polygone 5255"
+province;Prefecture of Mohammedia;6371;SRC-05;rapprochement spatial;"unité MA002006 ; point intérieur dans le polygone 6371"
+province;Province d El Kelaat Es Sraghna;7191;SRC-05;rapprochement spatial;"unité MA006005 ; point intérieur dans le polygone 7191"
+province;Rhamna Province;7427;SRC-05;rapprochement spatial;"unité MA006008 ; point intérieur dans le polygone 7427"
+province;شتوكة آيت باها;9163;SRC-19;nom des cartes;colonne libelle_ar des cartes du HCP
+province;Taroudant Province;9541;SRC-05;rapprochement spatial;"unité MA009004 ; point intérieur dans le polygone 9541"
+region;Tangier Tetouan Al Hoceima;1;SRC-05;rapprochement spatial;"unité MA010 ; point intérieur dans le polygone 1"
+region;Eddakhla-Oued Eddahab;12;SRC-19;nom des cartes;colonne libelle_fr des cartes du HCP
+region;Fez Meknes;3;SRC-05;rapprochement spatial;"unité MA004 ; point intérieur dans le polygone 3"

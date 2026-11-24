@@ -1,0 +1,85 @@
+# Catalogue des tables de référence de data/input/ (section 7.1, 13 et 14.2).
+#
+# residus.csv, concurrence.csv et facteurs_emission.csv sont au format long : une ligne par
+# valeur, avec sa provenance (source_id, annee, statut) et, si la source donne une fourchette,
+# sa loi d'incertitude. Ce catalogue fixe, pour chaque paramètre, son type, ses unités autorisées
+# et s'il doit figurer pour chaque ligne de la table (valeur ou « À compléter »).
+# Les unités suivent la section 13 et la section 8 ; « — » désigne une grandeur sans unité.
+#
+# Colonne « precision » : code d'une culture de codes_culture quand la valeur ne vaut que pour
+# elle (R13 : orge ; R04 : amandier, rosacees), sinon variante de procédé ou de lieu
+# (R05 : trois phases ; R06 : secours). Vide : valeur générale du résidu.
+
+residus:
+  codes: [R01, R02, R03, R04, R05, R06, R07, R08, R09, R10, R11, R12, R13]
+  parametres:
+    nom: {type: texte, unites: ["—"], obligatoire: true}
+    # Liste des cultures d'origine (codes de cultures.csv), séparés par des virgules (§8.1).
+    codes_culture: {type: liste, unites: ["—"], obligatoire: true}
+    mode_calcul:
+      type: choix
+      choix: [produit, surface, nombre de pieds]
+      unites: ["—"]
+      obligatoire: true
+    # Mode produit : t de résidu par t de produit (brute : avant application de l'humidité).
+    rpr: {type: nombre, unites: ["t brute/t produit"]}
+    # Mode surface. Les sources des résidus de taille donnent des t MS/ha/an : (1 − h) n'est
+    # appliqué qu'aux ratios en masse brute (exposant δ de la section 8.1).
+    rendement_surf: {type: nombre, unites: ["t brute/ha/an", "t MS/ha/an"]}
+    # Mode « nombre de pieds » : rendement par pied, et densité de plantation de secours quand
+    # le nombre de pieds manque (N = S × densité, statut « Estimée », §8.1).
+    rendement_arbre: {type: nombre, unites: ["kg MS/arbre/an"]}
+    densite_plantation: {type: nombre, unites: [pieds/ha]}
+    humidite: {type: nombre, unites: ["% masse brute"], obligatoire: true}
+    f_col: {type: nombre, unites: [fraction], obligatoire: true}
+    f_eco: {type: nombre, unites: [fraction], obligatoire: true}
+    carbone: {type: nombre, unites: ["% MS"], obligatoire: true}
+    cendres: {type: nombre, unites: ["% MS"], obligatoire: true}
+    pci: {type: nombre, unites: [MJ/kg], obligatoire: true}
+    # Pouvoir calorifique supérieur, stocké tel que publié (jamais converti en PCI).
+    pcs: {type: nombre, unites: [MJ/kg]}
+    densite_apparente: {type: nombre, unites: [kg/m³], obligatoire: true}
+    # Coûts de collecte et de prétraitement (broyage, séchage) par t MS (section 8.2).
+    k_col: {type: nombre, unites: [DH/t MS], obligatoire: true}
+    k_pre: {type: nombre, unites: [DH/t MS], obligatoire: true}
+    rendement_pyrolyse: {type: nombre, unites: [t biochar/t MS], obligatoire: true}
+    carbone_biochar: {type: nombre, unites: ["% biochar"]}
+    part_transformee: {type: nombre, unites: [fraction]}
+    part_non_valorisee: {type: nombre, unites: [fraction]}
+    eligible_ebc: {type: choix, choix: [oui, non], unites: ["—"], obligatoire: true}
+    scenario_reference:
+      type: choix
+      choix: [brûlage à l'air libre, décomposition au champ, usage concurrent, sans substitution]
+      unites: ["—"]
+      obligatoire: true
+
+concurrence:
+  parametres:
+    part_utilisee: {type: nombre, unites: [fraction], obligatoire: true}
+    prix_achat_dh_t: {type: nombre, unites: [DH/t], obligatoire: true}
+
+facteurs_emission:
+  parametres:
+    # Combustibles : facteurs du GIEC par TJ (PCI), convertis avec le PCI et la masse volumique.
+    kg_co2: {type: nombre, unites: [kg/TJ, kg/L, kg/t MS, kg/t biochar]}
+    kg_ch4_fossile: {type: nombre, unites: [kg/TJ, kg/L]}
+    kg_ch4_bio: {type: nombre, unites: [kg/t MS, kg/t biochar]}
+    kg_n2o: {type: nombre, unites: [kg/TJ, kg/L, kg/t MS, kg/t biochar]}
+    densite: {type: nombre, unites: [kg/L]}
+    facteur_combustion: {type: nombre, unites: [fraction]}
+    kg_co2e: {type: nombre, unites: [kg CO₂e/kWh, kg CO₂e/L]}
+    consommation_electricite: {type: nombre, unites: [kWh/t MS, kWh/t biochar]}
+    # Données d'activité de la chaîne (section 8.3) : gazole des machines, distance du biochar,
+    # pouvoir calorifique du fioul de substitution.
+    consommation_gazole: {type: nombre, unites: [L/t MS, L/t biochar]}
+    distance_km: {type: nombre, unites: [km]}
+    pci: {type: nombre, unites: [MJ/kg, MJ/L]}
+
+# Ratio exigé pour chaque mode de calcul (§8.1).
+ratio_par_mode:
+  produit: rpr
+  surface: rendement_surf
+  nombre de pieds: rendement_arbre
+
+# Code des lignes nationales de concurrence.csv (valeur par défaut d'un résidu, UC-POT-01).
+code_national: NATIONAL

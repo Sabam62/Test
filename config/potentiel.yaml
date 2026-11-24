@@ -1,0 +1,95 @@
+# Calcul des gisements (section 8.1, lot 2) : réglages lus par src/potentiel/.
+#
+# Aucune constante métier dans le code (ENF-08) : unités, rôle des précisions de residus.csv,
+# grandeurs de production par mode et ordre de fiabilité des statuts sont décrits ici.
+
+# Campagne de référence : paramètre PAR-02 (moyenne des N dernières campagnes disponibles).
+# Pour chaque province, culture et grandeur, les N campagnes les plus récentes où une valeur
+# existe sont moyennées ; les valeurs prévisionnelles sont incluses et signalées
+# (décision du 22/11/2026).
+parametre_campagnes: PAR-02
+
+# Unités des ratios de residus.csv : base (MS ou brute, exposant δ_r de la section 8.1) et
+# facteur vers la tonne. (1 − h) n'est appliqué qu'à un ratio exprimé en masse brute.
+unites_ratio:
+  "t MS/ha/an": {base: MS, facteur_tonne: 1}
+  "t brute/ha/an": {base: brute, facteur_tonne: 1}
+  "t brute/t produit": {base: brute, facteur_tonne: 1}
+  "kg MS/arbre/an": {base: MS, facteur_tonne: 0.001}
+
+# Unités converties en fraction (humidité, carbone, parts).
+unites_fraction:
+  "% masse brute": 0.01
+  "% MS": 0.01
+  "% biochar": 0.01
+  fraction: 1
+  t biochar/t MS: 1
+
+# Unité de la densité de plantation (mode « nombre de pieds »).
+unite_densite: pieds/ha
+
+# Grandeur de la table production utilisée par chaque mode de calcul (section 8.1).
+grandeurs_par_mode:
+  produit: production_t
+  surface: superficie_ha
+  nombre de pieds: superficie_ha
+
+# Paramètres de residus.csv multipliés dans T en plus du ratio : part des olives triturées
+# pour R05 (grignons), connue seulement pour Fès-Meknès (décision du 22/11/2026).
+multiplicateurs:
+  R05: [part_transformee]
+
+# Rôle de chaque précision de residus.csv (colonne « precision ») :
+# - culture : la précision est un code de cultures.csv ; la valeur sans précision vaut pour
+#   les autres cultures du résidu ;
+# - variante : la précision est le choix fait dans le paramètre « choix_par » ;
+# - region : la valeur ne vaut que pour la région nommée ; ailleurs, elle est à compléter ;
+# - secours : valeur de secours (densité de plantation quand le nombre de pieds manque) ;
+# - etat : état du matériau auquel se rapporte la seule valeur disponible (utilisée telle quelle) ;
+# - information : valeur citée, non utilisée par le calcul des gisements.
+precisions:
+  - {residu: R04, parametre: rendement_surf, role: culture}
+  - {residu: R13, parametre: rpr, role: culture}
+  - {residu: R05, parametre: rpr, role: variante, choix_par: PAR-62}
+  - {residu: R05, parametre: humidite, role: variante, choix_par: PAR-62}
+  - {residu: R05, parametre: part_transformee, role: region}
+  - {residu: R12, parametre: rpr, role: variante, choix_par: PAR-63}
+  - {residu: R12, parametre: humidite, role: variante, choix_par: PAR-63}
+  - {residu: R06, parametre: densite_plantation, role: secours}
+  - {residu: R06, parametre: part_non_valorisee, role: information}
+  - {residu: R09, parametre: humidite, role: etat}
+  - {residu: R01, parametre: carbone_biochar, role: information}
+  # Valeurs de contrôle (précision « contrôle ») : seconde source, base non sèche ou non
+  # précisée, gardée pour comparaison et jamais utilisée par le calcul.
+  - {residu: R06, parametre: carbone, role: information}
+  - {residu: R13, parametre: carbone, role: information}
+  - {residu: R13, parametre: cendres, role: information}
+
+# Statut d'une valeur calculée : le moins fiable de ses entrées, dans cet ordre (du moins au
+# plus fiable). « À compléter » n'est pas un statut : il bloque le calcul (RG-14).
+ordre_statuts: [Hypothèse, Estimée, Littérature, Terrain, Mesurée]
+
+# Densité du gisement (critère A2) : M ÷ surface agricole, en t MS/km². La surface agricole
+# (surface cultivée CROPGRIDS de toutes les cultures, en ha) est écrite par scripts.prepare
+# (config/preparation.yaml, cropgrids.sortie_agricole) ; conversion des ha en km².
+hectares_par_km2: 100
+
+# Indicateurs des gisements (section 8.1, UC-POT-01 à 03) : libellé, unité, et « additif »
+# quand la somme des provinces a un sens (total national). C et B sont calculés sur M, comme le
+# veut la section 8.1 ; C_T et B_T, calculés sur T, sont affichés comme « théoriques » tant que
+# M attend f_col, f_eco et la part concurrente (décision du 22/11/2026).
+indicateurs:
+  T: {libelle: Gisement théorique, unite: t MS/an, additif: true}
+  M: {libelle: Gisement mobilisable, unite: t MS/an, additif: true}
+  C: {libelle: Carbone du gisement mobilisable, unite: t C/an, additif: true}
+  B: {libelle: Biochar potentiel du gisement mobilisable, unite: t biochar/an, additif: true}
+  C_T: {libelle: Carbone du gisement théorique, unite: t C/an, additif: true}
+  B_T: {libelle: Biochar potentiel du gisement théorique, unite: t biochar/an, additif: true}
+  densite_M: {libelle: Densité du gisement mobilisable, unite: t MS/km²/an, additif: false}
+  densite_T: {libelle: Densité du gisement théorique, unite: t MS/km²/an, additif: false}
+  cv_M: {libelle: Variabilité interannuelle du gisement mobilisable, unite: fraction, additif: false}
+
+# Statut de la valeur nationale par défaut de la part concurrente u, appliquée à une province
+# sans valeur propre (UC-POT-01, scénario alternatif) ; le statut retenu est le moins fiable
+# de celui-ci et de celui de la valeur nationale.
+statut_u_national: Littérature

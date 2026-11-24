@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Rapport de contrôle des données · Atlantic Biochar</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 72rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.45; }
+  h1 { font-size: 1.6rem; } h2 { font-size: 1.25rem; margin-top: 2.5rem; } h3 { font-size: 1.05rem; }
+  table { border-collapse: collapse; width: 100%; margin: .75rem 0 1.5rem; font-size: .9rem; }
+  th, td { border-bottom: 1px solid; border-color: inherit; padding: .3rem .5rem; text-align: left; vertical-align: top; }
+  td.nombre, th.nombre { text-align: right; font-variant-numeric: tabular-nums; }
+  .discret { opacity: .7; font-size: .9rem; }
+</style>
+</head>
+<body>
+<h1>{{ nb_provinces - sans_production|length }} provinces sur {{ nb_provinces }} ont une production réelle ou estimée selon la RG-04</h1>
+<p class="discret">Rapport produit par <code>python -m scripts.prepare</code> le {{ date }}. Lignes numérotées à partir de la première ligne de données de chaque fichier.</p>
+{% if sans_production %}
+<p>Provinces sans production (aucune valeur comptée zéro, RG-06) : {{ sans_production|join(", ") }}.</p>
+{% endif %}
+
+<h2>1. Lignes lues par source (UC-DAT-02)</h2>
+{% for section in sections %}
+<h3>{{ section.source_id }} · {{ section.fichier }}</h3>
+{% if titres.get(section.source_id) %}<p class="discret">{{ titres[section.source_id] }}</p>{% endif %}
+<table>
+  <tr><th>Lignes lues</th>{% for c in categories %}<th class="nombre">{{ c|capitalize }}</th>{% endfor %}</tr>
+  <tr><td>{{ section.lues|fr }}</td>{% for c in categories %}<td class="nombre">{{ section.nombres[c]|fr }}</td>{% endfor %}</tr>
+</table>
+<table>
+  <tr><th>Catégorie</th><th>Source</th><th>Motif</th><th class="nombre">Lignes (nombre)</th><th>Numéros</th></tr>
+  {% for d in section.details %}
+  <tr><td>{{ d.categorie }}</td><td>{{ d.source_id }}</td><td>{{ d.motif }}</td><td class="nombre">{{ d.nombre|fr }}</td><td>{{ d.lignes }}</td></tr>
+  {% endfor %}
+</table>
+{% endfor %}
+
+<h2>2. Désagrégation hiérarchique (RG-04, UC-DAT-04)</h2>
+<p>{{ nb_conformes }} total(aux) parent(s) sur {{ controles|length }} égal(aux) à la somme de leurs provinces à la tolérance près.</p>
+<table>
+  <tr><th>Maille</th><th>Zone</th><th>Culture</th><th>Campagne</th><th>Grandeur</th><th class="nombre">Total parent</th><th class="nombre">Somme des provinces</th><th class="nombre">Écart (%)</th><th>Conforme</th></tr>
+  {% for c in controles %}
+  <tr><td>{{ c.niveau }}</td><td>{{ c.code_zone }}</td><td>{{ c.code_culture }}</td><td>{{ c.campagne }}</td><td>{{ c.variable }}</td><td class="nombre">{{ c.total|fr }}</td><td class="nombre">{{ c.somme_provinces|fr }}</td><td class="nombre">{{ (c.ecart_relatif * 100)|fr(3) }}</td><td>{{ "oui" if c.conforme else "non" }}</td></tr>
+  {% endfor %}
+</table>
+<h3>Incohérences ({{ incoherences|length }})</h3>
+{% if incoherences %}<ul>{% for i in incoherences %}<li>{{ i }}</li>{% endfor %}</ul>{% else %}<p>Aucune.</p>{% endif %}
+<h3>Valeurs soustraites d'une autre campagne que leur total ({{ ecarts_campagne|length }})</h3>
+<p class="discret">Valeur réelle soustraite (province ou groupe) dont la campagne diffère de celle du total parent, ou dont la campagne a été déduite d'une année civile par la règle de campagne (RG-04). La provenance de chaque valeur estimée le rappelle (colonnes « soustraites » et « ecart_campagne »).</p>
+{% if ecarts_campagne %}<ul>{% for e in ecarts_campagne %}<li>{{ e }}</li>{% endfor %}</ul>{% else %}<p>Aucune.</p>{% endif %}
+<h3>Prévisions écartées au profit d'une valeur réalisée ({{ previsions|length }})</h3>
+{% if previsions %}<ul>{% for p in previsions %}<li>{{ p }}</li>{% endfor %}</ul>{% else %}<p>Aucune.</p>{% endif %}
+
+<h2>3. Couverture des provinces (RG-06)</h2>
+<p>Une province absente n'a pas de valeur pour ce couple : elle est exclue des calculs qui en dépendent, jamais comptée zéro.</p>
+<table>
+  <tr><th>Grandeur</th><th>Culture</th><th>Campagne</th><th class="nombre">Réelles</th><th class="nombre">Estimées</th><th class="nombre">Absentes</th><th>Provinces absentes</th></tr>
+  {% for c in couverture %}
+  <tr><td>{{ c.variable }}</td><td>{{ c.code_culture }}</td><td>{{ c.campagne }}</td><td class="nombre">{{ c.reelles }}</td><td class="nombre">{{ c.estimees }}</td><td class="nombre">{{ c.absentes }}</td><td class="discret">{{ c.provinces_absentes }}</td></tr>
+  {% endfor %}
+</table>
+</body>
+</html>

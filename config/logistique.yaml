@@ -1,0 +1,82 @@
+# Logistique (section 8.2, lot 3) : réglages lus par src/logistique/.
+#
+# Aucune constante métier dans le code (ENF-08) : identifiants des paramètres, conversions
+# d'unités, routage et sites candidats sont décrits ici.
+
+# --- Points de rattachement des gisements (H1, section 8.2) ------------------------------
+# Barycentre des pixels CROPGRIDS (surface cultivée des cultures d'origine du résidu, pixels
+# partagés au prorata de l'aire) ; à défaut (résidu sans culture CROPGRIDS, surface nulle),
+# centroïde géométrique de la province.
+rattachement:
+  variable_cropgrids: croparea
+  sortie: rattachements.parquet
+
+# --- Sites candidats (section 4) ---------------------------------------------------------
+# Chefs-lieux : ville (place=city ou town) de l'extrait OpenStreetMap (SRC-06) dont le nom
+# correspond à celui de la province, ou le chef-lieu administratif désigné dans
+# data/input/chefs_lieux.csv ; sinon la ville la plus peuplée, sinon le centroïde, signalés. Agropoles : data/input/sites.csv. Sites de l'utilisateur :
+# config/sites.local.yaml (local, ignoré par Git).
+sites:
+  source_osm: SRC-06
+  fichier_osm: morocco-latest.osm.pbf
+  couche_osm: points
+  # village : certains chefs-lieux administratifs (Moulay Yacoub) sont des villages dans OSM.
+  types_lieux: [city, town, village]
+  sortie_chefs_lieux: sites_chefs_lieux.parquet
+  fichier_agropoles: sites.csv
+  # Chefs-lieux administratifs désignés quand aucune ville ne porte le nom de la province.
+  fichier_chefs_lieux: chefs_lieux.csv
+  fichier_utilisateur: sites.local.yaml
+
+# --- Distances (SRC-07, UC-LOG-02) --------------------------------------------------------
+osrm:
+  # Service local démarré par « bash scripts/osrm_setup.sh --serveur » (Windows :
+  # scripts\osrm_setup.ps1 -Serveur).
+  url: http://localhost:5001
+  profil: driving
+  delai_secondes: 20
+  # Délai du test de disponibilité (bandeau de l'interface).
+  delai_test_secondes: 2
+  # Nombre de points de rattachement par requête /table (taille de lot technique).
+  lot: 200
+# Repli sans OSRM : distance à vol d'oiseau (grand cercle) × coefficient de détour PAR-30,
+# calibré sur la dernière matrice OSRM : médiane de distance routière ÷ vol d'oiseau.
+parametre_detour: PAR-30
+rayon_terre_km: 6371.0088 # rayon moyen de la Terre (UGGI)
+metres_par_km: 1000
+secondes_par_minute: 60
+dossier_cache: logistique
+
+# --- Coût livré (section 8.2) -------------------------------------------------------------
+# CL = a + k_col + k_pre + (F + v · 2 d) / q ; v = consommation × prix du gazole ÷ part du
+# carburant ; q = min(charge maximale, densité apparente × volume utile) × (1 − h).
+trajets_par_rotation: 2 # aller chargé et retour à vide (section 8.2)
+parametres:
+  capacite: PAR-01 # entreprise
+  prix_plafond: PAR-34 # entreprise
+  distance_maximale: PAR-59 # entreprise, facultatif
+  prix_gazole: PAR-37 # entreprise (le repère de parametres.yaml n'est jamais utilisé)
+  consommation: PAR-38
+  part_carburant: PAR-39
+  charge_maximale: PAR-31
+  volume_utile: PAR-32
+  cout_fixe: PAR-61
+  rayon_c3: PAR-35
+# Conversions vers l'unité du calcul.
+conversions:
+  "L/100 km": 0.01 # vers L/km
+  "%": 0.01 # vers fraction
+  "kg/m³": 0.001 # vers t/m³
+# Paramètres de residus.csv utilisés (k_col, k_pre : DH/t MS) et de concurrence.csv (a).
+residus:
+  humidite: humidite
+  densite_apparente: densite_apparente
+  cout_collecte: k_col
+  cout_pretraitement: k_pre
+concurrence:
+  prix_achat: prix_achat_dh_t
+  # Unité des prix d'achat (t brute) ; un prix observé (écran Données) dans cette unité, pour
+  # un produit désigné par le code ou le nom du résidu, prime sur concurrence.csv.
+  unite_prix: DH/t
+# Indicateur des gisements qui alimente la courbe d'approvisionnement.
+indicateur_gisement: M

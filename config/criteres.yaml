@@ -1,0 +1,37 @@
+# Catalogue des 19 critères de décision (section 9, table « criteres » de la section 13).
+#
+# Pour chaque critère : libellé, axe (A à G), unité, sens (hausse : plus c'est élevé, mieux
+# c'est ; baisse : l'inverse ; filtre : éliminatoire oui/non), niveaux (G gisement, S site),
+# priorité, actif par défaut, et « calcul » : nom de la fonction enregistrée dans
+# src/decision/indicateurs.py (ENF-11 : ajouter un critère = une entrée ici et une fonction).
+# « actif_si » : paramètres de l'entreprise dont dépend l'activation par défaut (C6).
+
+axes:
+  A: Ressource
+  B: Qualité de la matière première
+  C: Logistique et économie
+  D: Climat et environnement
+  E: Débouchés du biochar
+  F: Infrastructure et implantation
+  G: Dimension sociale
+
+criteres:
+  A1: {libelle: Tonnage mobilisable, axe: A, unite: t MS/an, sens: hausse, niveaux: [G, S], priorite: P1, actif_defaut: true, calcul: tonnage_bassin}
+  A2: {libelle: Densité du gisement, axe: A, unite: t MS/km², sens: hausse, niveaux: [G], priorite: P1, actif_defaut: false, calcul: densite_gisement}
+  A3: {libelle: Part libre d'usage concurrent, axe: A, unite: "%", sens: hausse, niveaux: [G, S], priorite: P1, actif_defaut: true, calcul: part_libre}
+  A4: {libelle: Régularité saisonnière, axe: A, unite: mois/an, sens: hausse, niveaux: [S], priorite: P1, actif_defaut: true, calcul: regularite_saisonniere}
+  B1: {libelle: Teneur en carbone, axe: B, unite: "% MS", sens: hausse, niveaux: [G, S], priorite: P1, actif_defaut: false, calcul: teneur_carbone}
+  B2: {libelle: Taux de cendres, axe: B, unite: "% MS", sens: baisse, niveaux: [G, S], priorite: P1, actif_defaut: true, calcul: taux_cendres}
+  B3: {libelle: Humidité à la collecte, axe: B, unite: "%", sens: baisse, niveaux: [G, S], priorite: P1, actif_defaut: false, calcul: humidite}
+  B4: {libelle: Rendement en biochar, axe: B, unite: t biochar/t MS, sens: hausse, niveaux: [G, S], priorite: P1, actif_defaut: false, calcul: rendement_biochar}
+  B5: {libelle: Éligibilité à la certification, axe: B, unite: oui/non, sens: filtre, niveaux: [G], priorite: P1, actif_defaut: true, calcul: eligibilite_ebc}
+  C1: {libelle: Coût livré à l'usine, axe: C, unite: DH/t MS, sens: baisse, niveaux: [G, S], priorite: P1, actif_defaut: true, calcul: cout_livre}
+  C2: {libelle: Distance routière moyenne, axe: C, unite: km, sens: baisse, niveaux: [S], priorite: P1, actif_defaut: true, calcul: distance_moyenne}
+  C3: {libelle: Tonnage dans un rayon, axe: C, unite: t MS/an, sens: hausse, niveaux: [S], priorite: P1, actif_defaut: false, calcul: tonnage_rayon}
+  C6: {libelle: Marge estimée sur matière, axe: C, unite: DH/t MS, sens: hausse, niveaux: [G, S], priorite: P1, actif_defaut: false, actif_si: [PAR-55, PAR-56], calcul: marge}
+  D1: {libelle: Bilan carbone net, axe: D, unite: t CO₂e/t biochar, sens: hausse, niveaux: [G, S], priorite: P1, actif_defaut: true, calcul: bilan_net}
+  D2: {libelle: Part du transport dans les émissions, axe: D, unite: "%", sens: baisse, niveaux: [S], priorite: P1, actif_defaut: false, calcul: part_transport}
+  E1: {libelle: Surface agricole proche, axe: E, unite: ha, sens: hausse, niveaux: [S], priorite: P1, actif_defaut: true, calcul: surface_agricole}
+  F1: {libelle: Accès au réseau routier principal, axe: F, unite: km, sens: baisse, niveaux: [S], priorite: P1, actif_defaut: true, calcul: distance_route}
+  F2: {libelle: Proximité d'une zone d'activités, axe: F, unite: km, sens: baisse, niveaux: [S], priorite: P1, actif_defaut: true, calcul: distance_zone}
+  G1: {libelle: Main-d'œuvre rurale, axe: G, unite: habitants, sens: hausse, niveaux: [S], priorite: P1, actif_defaut: true, calcul: population_rurale}

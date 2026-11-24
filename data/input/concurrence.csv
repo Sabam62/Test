@@ -1,0 +1,28 @@
+code_province;code_residu;parametre;precision;valeur;min;mode;max;loi;unite;source_id;autres_sources;annee;statut;note;ou_trouver
+NATIONAL;R01;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R01;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R02;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R02;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R03;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R03;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R04;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R04;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R05;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R05;prix_achat_dh_t;;660;650;;670;uniforme;DH/t;SRC-16-LAVIEECO;;2013;Hypothèse;"milieu de fourchette ; marché marocain, 650 à 670 DH/t en 2013 après 500 DH/t en 2012 (PAR-14) ; offres 2026 de 70 à 85 €/t FOB depuis Fès (Algomtl) non converties";
+NATIONAL;R06;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R06;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R07;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R07;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R08;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R08;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R09;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R09;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R10;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R10;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R11;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R11;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R12;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R12;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"enquête de terrain (SRC-17) ; 0 si le résidu est aujourd'hui sans valeur (section 8.2)"
+NATIONAL;R13;part_utilisee;;À compléter;;;;;fraction;;;;Terrain;;enquête de terrain (SRC-17) : docs/donnees_manuelles.md, section SRC-17
+NATIONAL;R13;prix_achat_dh_t;;À compléter;;;;;DH/t;;;;Terrain;;"convertir 7 à 12 DH la botte (année normale) et 20 à 35 DH (sécheresse) (Médias24, PAR-14) avec la masse d'une botte, à trouver ; sinon enquête de terrain (SRC-17)"
+8201;R06;part_utilisee;;0.38;;;;;fraction;SRC-16-CAHIERS-AGRICULTURES-2024;;2024;Estimée;"1 − 0,62 : 62 % des résidus laissés ou brûlés au Tafilalet (§14.2), donc 38 % déjà utilisés ; rattaché à la province d'Errachidia";

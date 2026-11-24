@@ -1,0 +1,51 @@
+# Environnement de l'outil d'aide à la décision Atlantic Biochar (section 16).
+# Installation : conda env create -f environment.yml && conda activate ab-dss
+# Activity Browser 3 s'installe dans un environnement séparé (voir README).
+name: ab-dss
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - pip
+  # API locale
+  - fastapi>=0.110
+  - uvicorn>=0.29
+  - python-multipart
+  - httpx
+  # Configuration
+  - pydantic>=2
+  - pyyaml
+  # Données tabulaires
+  - numpy
+  - pandas>=2.2
+  - pyarrow
+  # Données géographiques et rasters
+  - geopandas>=1.0
+  - shapely>=2
+  - pyproj
+  - pyogrio
+  - rasterio
+  - rioxarray
+  - xarray
+  - netcdf4
+  - rasterstats
+  # Optimisation
+  - scipy>=1.11
+  # ACV : Brightway 2.5, sans ecoinvent. Le méta-paquet brightway25 n'est pas sur conda-forge :
+  # on installe ses composants.
+  - bw2data>=4
+  - bw2calc>=2
+  - bw2io
+  - bw2parameters
+  # Exports
+  - openpyxl
+  - jinja2
+  # Qualité
+  - pytest
+  - pytest-cov
+  - ruff
+  - pip:
+      - pyDecision
+      - pymcdm
+      - -e .

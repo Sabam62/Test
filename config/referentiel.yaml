@@ -1,0 +1,38 @@
+# Référentiel des régions et provinces (RG-02, UC-DAT-03).
+#
+# Découpage du RGPH 2024 imposé par le cahier : 12 régions, 75 provinces et préfectures.
+# Géométries, codes et noms (variantes de graphie) : cartes du HCP (SRC-19), dont les indicateurs
+# datent du RGPH 2014 et ne sont pas utilisés. Noms officiels (français, arabe) et codes
+# géographiques : RGPH 2024 (SRC-09).
+
+source_polygones: SRC-19
+fichier_regions: hcp_regions_natif.geojson
+fichier_provinces: hcp_provinces_natif.geojson
+# Noms des cartes (français, arabe), sans géométrie : variantes de graphie seulement.
+fichier_noms_regions: hcp_regions_noms.json
+fichier_noms_provinces: hcp_provinces_noms.json
+
+# Système des coordonnées natives du service du HCP. Il déclare EPSG:41001 (Mercator sphérique) ;
+# lues en EPSG:3857 (même Mercator sphérique sur WGS 84), elles placent correctement les villes
+# de contrôle (Rabat, Salé, Berrechid, M'diq, Oujda, Agadir, Inezgane, Dakhla…) et concordent un à
+# un avec les frontières HDX. La reprojection en EPSG:4326 proposée par le service est fausse
+# (décalage de 15 à 30 km vers le nord) : elle n'est pas utilisée. Vérifié le 22/11/2026.
+crs_natif_polygones: "EPSG:3857"
+
+source_noms: SRC-09
+fichier_rgph: rgph2024_population_legale.xlsx
+
+# Contrôles du découpage (cahier, sections 4 et 17).
+nb_regions: 12
+nb_provinces: 75
+
+# Code géographique du RGPH 2024 d'une province = code de la région suivi du code de la province
+# sur 3 chiffres (exemple réel : Aousserd, région 12, province 66 → « 12066 »). Les cartes du HCP
+# donnent les deux codes séparément, sans zéro initial.
+chiffres_code_province: 3
+
+# Projection équivalente (aires conservées), en kilomètres : les surfaces sortent en km².
+crs_surface: "+proj=cea +lon_0=0 +lat_ts=30 +datum=WGS84 +units=km +no_defs"
+
+# Table des variantes de noms (nom → code, avec la source de chaque variante).
+fichier_variantes: variantes_provinces.csv
