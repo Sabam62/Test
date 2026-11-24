@@ -15,6 +15,7 @@ if not defined CONDA_CMD for %%P in (
   "%LOCALAPPDATA%\miniforge3\condabin\conda.bat"
   "C:\miniforge3\condabin\conda.bat"
   "C:\miniconda3\condabin\conda.bat"
+  "C:\ProgramData\Miniforge3\condabin\conda.bat"
 ) do if not defined CONDA_CMD if exist "%%~P" set "CONDA_CMD=%%~P"
 
 if not defined CONDA_CMD goto manque_conda
