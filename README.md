@@ -41,7 +41,9 @@ CONDA_DEFAULT_CHANNELS=https://conda.anaconda.org/conda-forge conda env create -
 
 ## Démarrage en un clic (Windows)
 
-Prérequis : installez [Miniforge](https://github.com/conda-forge/miniforge) une seule fois. Une fois ce dépôt présent sur l’ordinateur, double-cliquez sur [**`Lancer Atlantic Biochar.bat`**](https://github.com/Sabam62/Test/blob/main/Lancer%20Atlantic%20Biochar.bat) (ou ouvrez le fichier à la racine du dépôt).
+Le lien vers le fichier `.bat` sur GitHub affiche son code : il ne lance pas le logiciel. Téléchargez d’abord [le dépôt complet au format ZIP](https://github.com/Sabam62/Test/archive/refs/heads/main.zip), puis extrayez l’archive dans un dossier. Le lanceur a besoin des autres fichiers du projet ; ne téléchargez pas seulement le `.bat`.
+
+Prérequis : installez [Miniforge](https://github.com/conda-forge/miniforge) une seule fois. Dans le dossier extrait, double-cliquez ensuite sur [**`Lancer Atlantic Biochar.bat`**](https://github.com/Sabam62/Test/blob/main/Lancer%20Atlantic%20Biochar.bat). Au premier démarrage, laissez la fenêtre ouverte pendant l’installation et le téléchargement des données (environ 1,1 Go).
 
 Au premier lancement, ce bouton crée l’environnement Python, télécharge les données nécessaires (environ 1,1 Go), prépare les fichiers, puis démarre l’application et ouvre le navigateur sur <http://127.0.0.1:8000>. Laissez la fenêtre ouverte pendant cette préparation. Les lancements suivants ouvrent directement l’application. Une connexion Internet est nécessaire pour la première préparation.
 
